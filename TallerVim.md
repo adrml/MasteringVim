@@ -11,7 +11,6 @@ Keystrokes: Acción
 h/j/k/l: Mueve el cursor izquierda/abajo/arriba/derecha
 barra espaciadora: Mueve el cursor a la izquierda un espacio.
 -/+: Mueve el cursor abajo/arriba en la primera columna.
-
 ---
 
 # Editar el contenido del archivo 
