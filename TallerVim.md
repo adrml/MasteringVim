@@ -21,4 +21,6 @@ barra espaciadora: Mueve el cursor a la izquierda un espacio.
 # Comandos combinados
 
 
-# Macros
+# Macros 
+
+
