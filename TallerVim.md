@@ -7,7 +7,11 @@ date: sáb mar  9 19:29:38 CET 2019
 # Moverse por el archivo
 
 ---
-+[num]: Abre el editor con el cursor en la línea [num]. Si el númer no se ha especificado, el cursor aparecerá en la última línea del fichero.
+Keystrokes: Acción
+h/j/k/l: Mueve el cursor izquierda/abajo/arriba/derecha
+barra espaciadora: Mueve el cursor a la izquierda un espacio.
+-/+: Mueve el cursor abajo/arriba en la primera columna.
+
 ---
 
 # Editar el contenido del archivo 
