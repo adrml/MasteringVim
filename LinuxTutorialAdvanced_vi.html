@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VI and VIM editor: Tutorial and advanced features</title>
+<link rel="canonical" href="http://www.yolinux.com/TUTORIALS/LinuxTutorialAdvanced_vi.html" />
+<meta name="keywords" content="vi,vim,tutorial,advanced,linux,unix,vi editor,vi guide,vi help" />
+<meta name="description" content="VI and VIM Linux editor tutorial of advanced editing features and tricks. This tutorial covers advanced use, tagging, vim plugins and integration with cscope. The YoLinux portal covers topics from desktop to servers and from developers to users" />
+<meta name="author" content="Greg Ippolito" />
+<link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/yolinux-res.css"/>
+</head>
+
+<body>
+<a name="TOP"></a>
+<a name="TOP"></a>
+<div class="container-fluid">
+
+<div class="row" itemprop="breadcrumb">
+<ol class="yo-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+  <li class="yo-breadcrumb" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a rel="home" itemprop="item" href="/"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" />
+  </li>
+  <li class="yo-breadcrumb" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/TUTORIALS/"><span itemprop="name">Tutorials</span></a><meta itemprop="position" content="2" />
+  </li>
+  <li class="yo-breadcrumb" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/TUTORIALS/LinuxTextEditors.html"><span itemprop="name">Linux Text Editors</span></a><meta itemprop="position" content="3" />
+  </li>
+  <li class="yo-breadcrumb active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="/TUTORIALS/LinuxTutorialAdvanced_vi.html"><span itemprop="name">vi and vim</span></a><meta itemprop="position" content="4" />
+  </li>
+</ol>
+</div>
+
+<div class="row">
+<div class="col-sm-3 top-space">
+<a href="http://www.yolinux.com/"><img src="images/YoLinux_Tutorial_logo.png" alt="Yolinux.com Tutorial" border="none" /></a>
+</div>
+<div class="col-sm-9">
+<h1>Linux vi and vim editor: Tutorial and advanced features</h1>
+<p>
+</p>
+<div class="ad-head" align="center">
+<iframe class="adframe" scrolling="no" allowTransparency="true"
+marginheight="0" marginwidth="0"
+width="720" frameborder="0" height="90"
+style='border:none;width:720;height:90;padding:0;'
+src="/ADVERTISING/iframe728x90px-ValueClick.html">
+</iframe>
+</div>
+
+<p>
+</p>
+</div> <!-- end of col-sm-9 -->
+</div> <!-- end of row -->
+
+<div class="row">
+<!-- Navigation Menu bar -->
+<div id="globalNavigation">
+<table bgcolor="#000000" width="100%">
+<tbody>
+<tr>
+<td>
+<form method="post" action="http://search.yolinux.com/cgi-bin/htsearch">
+<input type="hidden" name="method" value="all" /> 
+<input type="hidden" name="format" value="long" /> 
+<input type="hidden" name="sort" value="score" /> 
+<input type="hidden" name="config" value="htdig-yolinux" /> 
+<input type="hidden" name="restrict" value="" /> 
+<input type="hidden" name="exclude" value="" /> 
+<label for="search">search</label>
+<input type="text" size="20" maxlength="80" name="words" id="search"/> 
+<input type="submit" value="Search"/>
+</form>
+</td>
+<td align="right">
+<font color="#f7bc33" size="-1">
+<b>
+&nbsp; | &nbsp;
+<a href="/" class="menubar" title="YoLinux Home Page">Home Page</a>&nbsp;|&nbsp;
+<a href="/TUTORIALS/" class="menubar" title="YoLinux Web Site Tutorials Index">Linux Tutorials</a>&nbsp;|&nbsp;
+<a href="/YoLinux-Terms.html" class="menubar" title="YoLinux.com terms of use" rel="nofollow">Terms</a>&nbsp;|&nbsp;
+<a href="/privacy.html" class="menubar" title="YoLinux.com privacy policy" rel="nofollow">Privacy Policy</a>&nbsp;|&nbsp;
+<a href="/YoLinux-Advertising.html" class="menubar" title="Advertising rates for YoLinux.com">Advertising</a>&nbsp;|&nbsp;
+<a href="/YoLinuxEmailForm.html" class="menubar" title="Send us an email" rel="nofollow">Contact</a> &nbsp;|&nbsp;
+</b>
+</font>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- End of Navigation menu bar -->
+
+</div>
+
+<div class="yo-row">
+<div id="leftcol">
+<div class="sectionv1">
+          <p><font size="-1"><b>Related YoLinux Tutorials:</b></font></p>
+          <p><font size="-1">&deg;<a href="LinuxTextEditors.html">Text Editors</a></font></p>
+          <p><font size="-1">&deg;<a href="LinuxTutorialXemacs.html">Emacs and C/C++</a></font></p>
+          <p><font size="-1">&deg;<a href="LinuxTutorialSoftwareDevelopment.html">Software development tools</a></font></p>
+          <p><font size="-1">&deg;<a href="LinuxTutorialC++.html">C++ Info, links</a></font></p>
+          <p><font size="-1">&deg;<a href="index.html">YoLinux Tutorials Index</a></font></p>
+</div> <!-- end of section 1 -->
+<div class="sectionv2">
+<p>
+<!-- BEGIN RICH-MEDIA CODE -->
+<script type="text/javascript"><!--
+google_ad_client = "pub-8567479315106986";
+/* 160x600, YoLinux default */
+google_ad_slot = "8947481941";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</p>
+<hr />
+<p>
+<!-- Ad links -->
+<script type="text/javascript"><!-- 
+google_ad_client = "pub-8567479315106986";
+google_ad_width = 160;
+google_ad_height = 90;
+google_ad_format = "160x90_0ads_al_s";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "C0C0C0";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</p>
+<!-- END CODE -->
+<hr />
+<p>
+<a href="http://yolinux.tradepub.com/">Free Information Technology Magazines and Document Downloads<br /><img src="images/TradePubMagazines.gif" border="0" alt="TradePub link image" /></a>
+</p>
+</div> <!-- end of section v2 -->
+
+
+</div> <!-- end leftcol -->
+
+<div id="content">
+<div class="labelbar">
+Vim Intro:
+</div>
+
+  <p>This "<b>vi</b>" tutorial is intended for those who wish to
+  master and advance their skills beyond the basic features of the
+  basic editor. It covers buffers, "<b>vi</b>" command line
+  instructions, interfacing with UNIX commands, and ctags. The
+  <b>vim</b> editor is an enhanced version of <b>vi</b>. The
+  improvements are clearly noticed in the handling of tags.</p>
+
+  <p>The advantage of learning <b>vi</b> and learning it well is
+  that one will find <b>vi</b> on all Unix based systems and it
+  does not consume an inordinate amount of system resources. Vi
+  works great over slow network ppp modem connections and on
+  systems of limited resources. One can completely utilize vi
+  without departing a single finger from the keyboard. (No hand to
+  mouse and return to keyboard latency)</p>
+
+  <p>NOTE: Microsoft PC Notepad users who do not wish to use
+  "<b>vi</b>" should use "<tt>gedit</tt>" (GNOME edit) or
+  "<tt>gnp</tt>" (GNOME Note Pad) on Linux. This is very similar in
+  operation to the Microsoft Windows editor, "Notepad". (Other Unix
+  systems GUI editors: "dtpad", which can be found in
+  <tt>/usr/dt/bin/dtpad</tt> for AIX, vuepad on HP/UX, or xedit on
+  all Unix systems.)</p>
+<p>
+See our list of <a href="LinuxTextEditors.html">Linux GUI editors</a>
+</p>
+
+<p>
+</p>
+<div class="labelbar">
+Vim Installation:
+</div>
+
+          <p>Red Hat / CentOS / Fedora:</p>
+          <ul>
+            <li><tt>rpm -ivh <i>vim-common-...rpm vim-minimal-...rpm vim-enhanced-...rpm vim-X11-...rpm</i></tt></li>
+            <li><tt>yum install vim-common vim-minimal vim-enhanced vim-X11</tt></li>
+          </ul>
+
+          Ubuntu / Debian:
+          <ul>
+            <li><tt>apt-get install vim vim-common vim-gnome
+            vim-gui-common vim-runtime</tt></li>
+          </ul>Compiling Vim from source:
+
+          <ul>
+            <li>Download vim source from
+            <tt>http://vim.org</tt></li>
+
+            <li><tt>tar xzf vim-7.0.tar.gz</tt></li>
+
+            <li><tt>cd vim70</tt></li>
+
+            <li><tt>./configure --prefix=/opt
+            --enable-cscope</tt></li>
+
+            <li><tt>make</tt></li>
+
+            <li><tt>make install</tt></li>
+          </ul>
+
+<p>
+</p>
+<div class="labelbar">
+Vi/Vim Command Line Arguments:
+</div>
+
+<p>
+Command usage: <tt>vim [arguments] filename1 [filename2 ...]</tt>
+</p>
+Vim arguments are listed in this table:
+  <table class="box">
+  <thead>
+  <tr>
+  <th>Arguments</th>
+  <th>Description</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+  <td>+[num]</td>
+  <td>Open editor with cursor on line "num". If "num" is not specified, the cursor will be on the last line of the file.</td>
+  </tr>
+
+  <tr>
+  <td>+/{pat}</td>
+  <td>Open editor with cursor on the first occurrence of {pat}.</td>
+  </tr>
+
+  <tr>
+  <td>-c {command}<br/>--cmd {command}</td>
+  <td>A "ex" command in dowble quotes will be processed against the file specified.</td>
+  </tr>
+
+  <tr>
+  <td>-b</td>
+  <td>Binary file mode.</td>
+  </tr>
+
+  <tr>
+  <td>-C<br/>-v</td>
+  <td>VI compatibility mode. Loses the more advanced vim features.</td>
+  </tr>
+
+  <tr>
+  <td>-d</td>
+  <td>Diff file mode. Must list all files to perform a diff upon (list 2, 3 or 4 files). Same as vimdiff.</td>
+  </tr>
+
+  <tr>
+  <td>-g</td>
+  <td>GUI gvim mode (if compiled in and available).</td>
+  </tr>
+
+  <tr>
+  <td>-h<br/>--help</td>
+  <td>Print help messages. Also see <tt>vimtutor</tt></td>
+  </tr>
+
+  <tr>
+  <td>-i <i>filename</i></td>
+  <td>Specify viminfo file. Default is <tt>~/.viminfo</tt></td>
+  </tr>
+
+  <tr>
+  <td>-r<br/>-L</td>
+  <td>Recovery mode. Used after a crash. The ".swp" file is used. See ":help recovery".</td>
+  </tr>
+
+  <tr>
+  <td>-M<br/>-R</td>
+  <td>File modifications and write not allowed.</td>
+  </tr>
+
+  <tr>
+  <td>-n</td>
+  <td>Prohibit ".swp" file generation. Required for special devices of limited space.</td>
+  </tr>
+
+  <tr>
+  <td>-x</td>
+  <td>Use encryption when writing files.  Will prompt for a crypt key.</td>
+  </tr>
+
+  <tr>
+  <td>--noplugin</td>
+  <td>Skip loading plugins.</td>
+  </tr>
+
+  <tr>
+  <td>--version</td>
+  <td>Print vim version.</td>
+  </tr>
+
+</tbody>
+</table>
+
+<p>
+</p>
+<div class="labelbar">
+Basic "vi" features:
+</div>
+
+  <p>One edits a file in <tt>vi</tt> by issuing the
+  command: <tt>vi file-to-edit.txt</tt></p>
+
+  <p>The vi editor has three modes, command mode, insert
+  mode and command line mode.</p>
+
+  <ol>
+    <li><b>Command mode:</b> letters or sequence of letters
+    interactively command vi. Commands are case sensitive.
+    The ESC key can end a command.</li>
+
+    <li><b>Insert mode:</b> Text is inserted. The ESC key
+    ends insert mode and returns you to command mode. One
+    can enter insert mode with the "i" (insert), "a"
+    (insert after), "A" (insert at end of line), "o" (open
+    new line after current line) or "O" (Open line above
+    current line) commands.</li>
+
+    <li><b>Command line mode:</b> One enters this mode by
+    typing ":" which puts the command line entry at the
+    foot of the screen.</li>
+  </ol>
+
+  <p>Partial list of interactive commands:</p>
+
+<p>
+</p>
+<b>Cursor Movement Commands:</b>
+  <table class="box">
+    <thead>
+      <tr>
+	<th>Keystrokes</th>
+	<th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>h/j/k/l</td>
+	<td>Move cursor left/down/up/right</td>
+      </tr>
+
+      <tr>
+	<td>spacebar</td>
+	<td>Move cursor right one space</td>
+      </tr>
+
+      <tr>
+	<td>-/+</td>
+	<td>Move cursor down/up in first
+	column</td>
+      </tr>
+
+      <tr>
+	<td>ctrl-d<br/>n ctrl-d</td>
+	<td>Scroll <b>d</b>own one half of a screen.<br/>Set scroll to "n" lines. New default set for half screen.</td>
+      </tr>
+
+      <tr>
+	<td>ctrl-u<br/> n ctrl-u</td>
+	<td>Scroll <b>u</b>p one half of a screen<br/>Set scroll to "n" lines. New default set for half screen.</td>
+      </tr>
+
+      <tr>
+	<td>ctrl-f<br/>n ctrl-f</td>
+	<td>Scroll <b>f</b>orward one screen<br/>Scroll forward "n" screen</td>
+      </tr>
+
+      <tr>
+	<td>ctrl-b<br/>n ctrl-b</td>
+	<td>Scroll <b>b</b>ack one screen<br/>Scroll back "n" screen</td>
+      </tr>
+
+      <tr>
+	<td>ctrl-y<br/>n ctrl-y</td>
+	<td>Scroll forward one line<br/>Scroll forward "n" lines</td>
+      </tr>
+
+      <tr>
+	<td>ctrl-e<br/>n ctrl-e</td>
+	<td>Scroll back one line<br/>Scroll back "n" lines</td>
+      </tr>
+
+      <tr>
+	<td>M (shift-m)</td>
+	<td>Move cursor to middle of page</td>
+      </tr>
+
+      <tr>
+	<td>H (shift-h)</td>
+	<td>Move cursor to top of page</td>
+      </tr>
+
+      <tr>
+	<td>L (shift-l)</td>
+	<td>Move cursor to bottom of page</td>
+      </tr>
+
+      <tr>
+	<td>W<br />
+	w<br />
+	5w</td>
+	<td>Move cursor a <b>word</b> at a time (white space delimited)<br />Move cursor a word at a time (first non-alphanumeric)<br/>Move cursor ahead 5 words</td>
+      </tr>
+
+      <tr>
+	<td>B<br />b<br />5b</td>
+	<td valign="top">Move cursor <b>back</b> a word at
+	a time (white space delimited)<br />
+	Move cursor back a word at a time (first non-alphanumeric)<br />
+	Move cursor back 5 words</td>
+      </tr>
+
+      <tr>
+	<td>E<br/>e<br />5e</td>
+	<td>Move cursor to <b>end</b> of word (white space delimited)<br />Move cursor to end of word (first non-alphanumeric)<br />Move cursor ahead to the end of the 5th
+	word</td>
+      </tr>
+
+      <tr>
+	<td>0 (zero)</td>
+	<td>Move cursor to beginning of line</td>
+      </tr>
+
+      <tr>
+	<td>:30</td>
+	<td>Move cursor to line thirty</td>
+      </tr>
+
+      <tr>
+	<td>$</td>
+	<td>Move cursor to end of line</td>
+      </tr>
+
+      <tr>
+	<td>)</td>
+	<td>Move cursor to beginning of next sentence (delimeted by ".", "?" or "!")</td>
+      </tr>
+
+      <tr>
+	<td>(</td>
+	<td>Move cursor to beginning of current sentence</td>
+      </tr>
+
+      <tr>
+	<td valign="top">}</td>
+	<td>Move cursor to beginning of next paragraph (delimeted by blank line or nroff macros: .IP, .LP, .PP, .QP, .P, .LI and .bp) Also see "set paragraphs" to define a paragraph.</td>
+      </tr>
+
+      <tr>
+	<td>{</td>
+	<td>Move cursor to beginning of current paragraph</td>
+      </tr>
+
+      <tr>
+	<td valign="top">]]</td>
+	<td>Move cursor to beginning of next section (delimeted by nroff macros: .NH, .SH, .H, .HU). Also see "set sections" to define a section.</td>
+      </tr>
+
+      <tr>
+	<td>[[</td>
+	<td>Move cursor to beginning of current section</td>
+      </tr>
+
+      <tr>
+	<td>G</td>
+	<td>Move cursor to end of file</td>
+      </tr>
+
+      <tr>
+	<td valign="top">%</td>
+	<td valign="top">Move cursor to the
+	matching bracket.<br />
+	Place cursor on {}[]() and type "%".
+	<br />Use the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit</a> or <a href="http://www.vim.org/scripts/script.php?script_id=301">xmledit</a> plug-in to extend this capability to XML/XHTML tags.</td>
+      </tr>
+
+      <tr>
+	<td>'.</td>
+	<td>Move cursor to previously modified
+	line.</td>
+      </tr>
+
+      <tr>
+	<td valign="top">m<br/>ma</td>
+	<td valign="top">Mark the line on which the cursor resides. Marking requires an identifier.<br /> Mark the line as identified by the letter "a" by marking with keystroke "ma"</td>
+      </tr>
+
+      <tr>
+	<td>'a</td>
+	<td>Move cursor to line mark "a" generated
+	by marking with keystroke "ma"</td>
+      </tr>
+
+      <tr>
+	<td>'A</td>
+	<td>Move cursor to line mark "A" (global
+	between buffers) generated by marking with
+	keystroke "mA"</td>
+      </tr>
+
+      <tr>
+	<td>]'</td>
+	<td>Move cursor to next lower case
+	mark.</td>
+      </tr>
+
+      <tr>
+	<td>['</td>
+	<td>Move cursor to previous lower case
+	mark.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><b>Editing Commands:</b></p>
+  <table class="box">
+    <thead>
+      <tr>
+	<th>Keystrokes</th>
+	<th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>i</td>
+	<td>Insert at cursor. Puts you in insert mode. Must use esc key to terminate insert mode.</td>
+      </tr>
+
+      <tr>
+	<td>I</td>
+	<td>Insert before the cursor. Puts you in insert mode. Must use esc key to terminate insert mode.</td>
+      </tr>
+
+      <tr>
+	<td>a</td>
+	<td>Append after cursor. Puts you in insert mode. Must use esc key to terminate insert mode.</td>
+      </tr>
+
+      <tr>
+	<td>A</td>
+	<td>Append at end of line. Puts you in insert mode. Must use esc key to terminate insert mode.</td>
+      </tr>
+
+      <tr>
+	<td>o</td>
+	<td>Open a new line below the current cursor position. Also puts you in insert mode. Must use esc key to terminate insert mode.</td>
+      </tr>
+
+      <tr>
+	<td>O</td>
+	<td>Open a new line above the current line. Also puts you in insert mode. Must use esc key to terminate insert mode.</td>
+      </tr>
+
+      <tr>
+	<td>ESC</td>
+	<td>Terminate insert mode. Terminates most other modes as well.</td>
+      </tr>
+
+      <tr>
+	<td>u</td>
+	<td>Undo last change</td>
+      </tr>
+
+      <tr>
+	<td>U</td>
+	<td>Undo all changes to entire line</td>
+      </tr>
+
+      <tr>
+	<td>dd<br />3dd</td>
+	<td valign="top">Delete line (stored in local buffer)<br />Delete 3 lines (stored in local buffer).</td>
+      </tr>
+
+      <tr>
+	<td>D</td>
+	<td>Delete contents of line after cursor</td>
+      </tr>
+
+      <tr>
+	<td>C</td>
+	<td>Delete contents of line after cursor and insert new text. Press esc key to end insertion.</td>
+      </tr>
+
+      <tr>
+	<td>dw<br />4dw<br/>d)<br/>d$<br/>d-<br/>dfx<br/>d'x<br/>'ad'b<br/>d/cat</td>
+	<td>Delete word<br />Delete 4 words<br/>Delete to end of sentence<br/>Delete all characters from cursor to end of line<br/>Delete current and previous line<br/>Delete from cursor to first occurance of the letter "x"<br/>Delete from the current line to the line marked with the identifier "x"<br/>Delete from the line of mark "a" to the line marked "b".<br/>Delete all characters from the cursor to the next occurance of (but not including) "cat"</td>
+      </tr>
+
+      <tr>
+	<td valign="top">cw<br/>c)<br/>c$</td>
+	<td>Change word<br/>Change sentence<br/>Change from cursor to end of line<br/>(See "d" delete above for other variations)</td>
+      </tr>
+
+      <tr>
+	<td>x</td>
+	<td>Delete character at cursor</td>
+      </tr>
+
+      <tr>
+	<td>X</td>
+	<td>Delete character before cursor</td>
+      </tr>
+
+      <tr>
+	<td>Y<br/>or<br/>yy</td>
+	<td>Yank (copy) current line into "unnamed" storage buffer.</td>
+      </tr>
+
+      <tr>
+	<td>p</td>
+	<td>Paste unnamed storage buffer after current line.</td>
+      </tr>
+
+      <tr>
+	<td>P</td>
+	<td>Paste unnamed storage buffer before current line.</td>
+      </tr>
+
+      <tr>
+	<td>r</td>
+	<td>Replace character</td>
+      </tr>
+
+      <tr>
+	<td>R</td>
+	<td>Overwrite characters from cursor onward</td>
+      </tr>
+
+      <tr>
+	<td>s</td>
+	<td>Substitute one character under cursor continue to insert</td>
+      </tr>
+
+      <tr>
+	<td>S</td>
+	<td>Substitute entire line and begin to insert at beginning of line</td>
+      </tr>
+
+      <tr>
+	<td>J</td>
+	<td>Join current and following line into one line</td>
+      </tr>
+
+      <tr>
+	<td>~</td>
+	<td>Change case of individual
+	character</td>
+      </tr>
+
+      <tr>
+	<td>ctrl-a<br />
+	ctrl-x</td>
+	<td>Increment number under the
+	cursor.<br />
+	Decrement number under the cursor.</td>
+      </tr>
+
+      <tr>
+	<td>.</td>
+	<td>repeat last command action.</td>
+      </tr>
+    </tbody>
+  </table>
+  <b>Control Characters:</b> Note that to enter control characters while in insert mode, prefix the the control character with "ctrl-v" and then type the control character (ex. Carriage control: ctrl-M, Form feed: ctrl-L, Backspace: ctrl-H, Delete: ctrl-P, ...).
+  Each control character must first be preceeded by ctrl-v while in insert mode.
+  <p>
+  <b>Delete/Restore Buffers:</b> Each time you delete or yank a line, it is stored in a local buffer and can be recalled and pasted. See "vi line buffers" examples below.
+
+  <p><b>Search Commands:</b></p>
+  <table class="box">
+    <thead>
+      <tr>
+	<th>Keystrokes</th>
+	<th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>/<i>search_string</i>{CR}</td>
+	<td>Search for <i>search_string</i></td>
+      </tr>
+
+      <tr>
+	<td>?<i>search_string</i>{CR}</td>
+	<td>Search backwards (up in file) for
+	<i>search_string</i></td>
+      </tr>
+
+      <tr>
+	<td valign="top">
+	/\&lt;<i>search_string</i>\&gt;{CR}</td>
+	<td valign="top">Search for
+	<i>search_word</i><br />
+	Ex: /\&lt;s\&gt;<br />
+	Search for variable "s" but ignore
+	declaration "string" or words containing
+	"s". This will find "string s;", "s =
+	fn(x);", "x = fn(s);", etc</td>
+      </tr>
+
+      <tr>
+	<td>n</td>
+	<td>Find <b>n</b>ext occurrence of search_word</td>
+      </tr>
+
+      <tr>
+	<td>N</td>
+	<td>Find previous occurrence of search_word</td>
+      </tr>
+
+      <tr>
+	<td>fx<br />nfx<br/>;</td>
+	<td>Move cursor to <b>f</b>irst occurance of letter "x" after the cursor but in the same line<br/>Move cursor to "n"th occurance of letter "x" in line<br/>Go to next occurance in line</td>
+      </tr>
+
+      <tr>
+	<td>Fx<br />nFx<br/>;</td>
+	<td>Move cursor backwards to next occurance of letter "x" in line<br/>Move cursor backwards to "n"th occurance of letter "x" in line<br/>Go to previous occurance in line</td>
+      </tr>
+
+      <tr>
+	<td>tx<br />ntx<br/>;</td>
+	<td>Move cursor to one char before the next occurance of letter "x" in line<br/>Move cursor to one char before the "n"th occurance of letter "x" in line.<br/>Go to one char before the next occurance in line</td>
+      </tr>
+
+      <tr>
+	<td>Tx<br />nTx<br/>;</td>
+	<td>Move cursor backwards to one char before the next occurance of letter "x"<br/>Move cursor backwards to one char before the "n"th occurance of letter "x"<br/>Go to one char before previous occurance in line</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <p>
+  </p>
+  Where search strings can have the following patterns:
+  <table class="box">
+    <thead>
+      <tr>
+	<th>Pattern</th>
+	<th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>.</td>
+	<td>A period matches any single character </td>
+      </tr>
+
+      <tr>
+	<td>^</td>
+	<td>Finds the beginning of a line </td>
+      </tr>
+
+      <tr>
+	<td>^A</td>
+	<td>Finds the beginning of a line where the first character is the letter 'A'</td>
+      </tr>
+
+      <tr>
+	<td>$</td>
+	<td>Matches the end of a line </td>
+      </tr>
+
+      <tr>
+	<td>[abc]</td>
+	<td>Matches a string which contains any of the letters (a, b or c) between the brackets </td>
+      </tr>
+
+      <tr>
+	<td>\</td>
+	<td>Turn off the special meaning of a character. Example "\." does not match the period to any character but to the period character specifically </td>
+      </tr>
+
+      <tr>
+	<td>\d</td>
+	<td>Match any single digit (0 to 9) </td>
+      </tr>
+
+      <tr>
+	<td>*</td>
+	<td>A search expression followed by a '*' matches zero or more of the search expression. For example "A*" will match A, AA and AAA</td>
+      </tr>
+
+      <tr>
+	<td>+</td>
+	<td>Same as '*' above except that it matches one or more of the search expression. </td>
+      </tr>
+
+      <tr>
+	<td>?</td>
+	<td>Same as '*' and "+" except that it matches zero or one occurances</td>
+      </tr>
+
+      <tr>
+	<td>string1|string2</td>
+	<td>Match any either string 1 or string 2</td>
+      </tr>
+
+      <tr>
+	<td>a.b</td>
+	<td>Matches a string beginning with the letter 'a' followed by any character, again followed by the letter 'c'</td>
+      </tr>
+
+      <tr>
+	<td>^.$</td>
+	<td>Matches an entire line containing only a single character</td>
+      </tr>
+
+      <tr>
+	<td>a(b*|c*)d</td>
+	<td>Matches a string beginning with the letter 'a' followed by zero or more of the letter 'b', followed by zero or more of the letter 'c' and then followed by the letter 'd'</td>
+      </tr>
+
+      <tr>
+	<td>Linux.*Linux</td>
+	<td>Finds a line containing two instances of the string "Linux" </td>
+      </tr>
+
+      <tr>
+	<td>.* [a-z]+ .*</td>
+	<td>Finds a line containing a word comprised of all lower case letters with a single blank on either side of the word </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <p><b>Information Commands:</b></p>
+  <table class="box">
+    <thead>
+      <tr>
+	<th>Keystrokes</th>
+	<th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>ctrl-g<br/>or<br/>:f</td>
+	<td>List file info: fine name, number of lines in file, position of cursor in file.</td>
+      </tr>
+
+      <tr>
+	<td>:set list<br/>:set nolist</td>
+	<td>Show tabs and end of line markers<br/>Turn of tab and eol markings</td>
+      </tr>
+
+      <tr>
+	<td>:args</td>
+	<td>Show command line arguments used</td>
+      </tr>
+
+    </tbody>
+  </table>
+  </dd>
+  </dl>
+
+  <p>Terminate session:</p>
+  <ul>
+    <li>Use command: ZZ<br />
+    Save changes to current file and quit.</li>
+
+    <li>Use command line: "<tt>:wq</tt>"<br />
+    Save (write) changes to current file and quit.</li>
+
+    <li>Use command line: "<tt>:w</tt>"<br />
+    Save (write) changes to current file without quitting.</li>
+
+    <li>Use command line: "<tt>:w!</tt>"<br />
+    Save (write) changes to current file overriding the file permissions if the user has the privileges to change the file permissions. For example this will save a file with read only privileges if the user is the owner or has the ability to modify the privileges to allow a write. This will not permanently modify the file privileges. Note that there is no space between the two characters. A space will infer that the output is streamed to a Unix command following the "!".</li>
+
+    <li>Use command line: "<tt>:w <i>filename</i></tt>"<br />
+    Save (write) changes to a new file of name "<i>filename</i>" without quitting.</li>
+
+    <li>Use command line: "<tt>:q!</tt>"<br />
+    Ignore changes and quit. No changes from last write
+    will be saved.</li>
+
+    <li>Use command line: "<tt>:qa</tt>"<br />
+    Quit all files opened.</li>
+  </ul>
+
+  <p>New session:</p>
+  <ul>
+    <li>Use command: "<tt>:e filename</tt>"<br />
+    Start new edit session on specified file name without closing current vi / vim editor process.</li>
+  </ul>
+
+<p>
+</p>
+<div class="labelbar">
+Vi/Vim modes:
+</div>
+
+<p>
+Vi/Vim modes are set using the "set" command and its many options.
+<p>
+<b>:set all</b> - display all mode settings of your editing session.
+<br>
+<b>:set termcap</b> - display terminal settings of your editing session.
+</p>
+<p>
+<b>:set ic</b> - Change default to ignore
+    case for text searches<br />
+    Default is changed from noignorecase to
+    ignorecase. (ic is a short form otherwise type
+    <b>set ignorecase</b>)
+</p>
+Common options to set:
+<br />
+    <table class="box">
+    <thead>
+    <tr>
+    <th>Full "set" Command</th>
+    <th>Short form</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+    <td valign="top">:set autoindent<br />:set noautoindent</td>
+    <td valign="top">:set ai<br />:set noai</td>
+    <td>{CR} returns to indent of previous line.
+        <br />Turn on autoindent: <tt>:set ai</tt>
+        <br />Turn off autoindent: <tt>:set noai</tt>
+        <br />Set indent width: <tt>set shiftwidth=4</tt>
+        <br />Intelligent auto-indent: <tt>set smartindent</tt>
+        <br/>Toggle autoindent on/off when pasting text (press F2 key to toggle mode after one is in "insert" mode): <tt>set pastetoggle=&lt;F2&gt;</tt>
+	<br/> or add the following to your <tt>~/.vimrc</tt> file:
+              <pre class="code-box">
+noremap &lt;F2&gt; :set invpaste paste?
+set pastetoggle=&lt;F2&gt;
+	      </pre>
+    </td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set autowrite<br />:set noautowrite</td>
+    <td valign="top">:set aw<br />:set noaw</td>
+    <td valign="top">This tells vim to automatically write the file when switching to edit another file. See tags, editing multiple files (next, rewind)</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set backspace=indent,eol,start<br />:set backspace</td>
+    <td valign="top">:set bs=indent,eol,start<br />:set bs</td>
+    <td valign="top">Allow backspacing over an indent, line break (end of line) or start of an insert</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set backup=on<br />:set backup=off</td>
+    <td valign="top">:set bk=on<br />:set bk=off</td>
+    <td valign="top">Create backup file of file changes while editing. 
+        <br />To automatically remove the backup file after the file being edited is written, use the option <tt>:set writebackup=on/off</tt>
+        <br />File backup mode settings: <tt>:set backupcopy=yes/no/auto</tt></td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set cryptmethod=zip<br />:set cryptmethod=blowfish</td>
+    <td valign="top">&nbsp;
+    <td valign="top">Set file encryption for file save of buffer contents.<ul><li>zip: pkzip</li><li>blowfish: strong encryption</li></ul>This is set upon reading a file if encrypted.<br />Vim 7.3+</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set errorbells<br />:set noerrorbells</td>
+    <td valign="top">:set eb<br />:set noeb</td>
+    <td valign="top">Silence error beep</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set flash<br />:set noflash</td>
+    <td valign="top">:set fl<br />:set nofl</td>
+    <td valign="top">Screen flashes upon error (for deaf people or when noerrorbells is set)</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set tabstop=8</td>
+    <td valign="top">:set ts</td>
+    <td valign="top">Tab key displays 8 spaces</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set ignorecase<br />:set noignorecase</td>
+    <td valign="top">:set ic<br />:set noic</td>
+    <td valign="top">Case sensitive searches</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set number<br />:set nonumber</td>
+    <td valign="top">:set nu<br />:set nonu</td>
+    <td valign="top">Display line numbers</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set showmatch<br />:set noshowmatch</td>
+    <td valign="top">no abbreviations</td>
+    <td valign="top">Cursor shows matching ")" and "}"</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set showmode<br />:set noshowmode</td>
+    <td valign="top">no abbreviations</td>
+    <td valign="top">Editor mode is displayed on bottom of screen</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set showmatch<br />:set noshowmatch</td>
+    <td valign="top">no abbreviations</td>
+    <td valign="top">Cursor shows matching ")" and "}"</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set syntax on<br />:set syntax off</td>
+    <td valign="top">no abbreviations</td>
+    <td valign="top">Set syntax highlighting and color highlighting for a file type (eg XML, HTML, C++, Java, etc). Also cursor shows matching ")" and "}"<br />Also can set syntax highlighting explicitly: <tt>:set syntax=html</tt><br />Syntax definition files: <tt>/usr/share/vim/vim73/syntax/</tt></td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set taglength</td>
+    <td valign="top">:set tl</td>
+    <td valign="top">Default=0. Set significant characters</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set closepunct='".,;)]}</td>
+    <td valign="top"><br /></td>
+    <td valign="top">% key shows matching symbol.<br /> Also see showmatch</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set linelimit=1048560</td>
+    <td valign="top"><br /></td>
+    <td valign="top">Maximum file size to edit</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set wrapscan<br />:set nowrapscan</td>
+    <td valign="top">:set ws<br />:set nows</td>
+    <td valign="top">Breaks line if too long</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set wrapmargin=0<br />:set wrapmargin=8<br/>:set nowrapmargin</td>
+    <td valign="top">:set wm<br />&nbsp;<br/>:set nowm</td>
+    <td valign="top">Define right margin for line wrapping.<br/>Wrap when past 8 characters from the edge of column display (often default 80).</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set list<br />:set nolist</td>
+    <td valign="top"><br /></td>
+    <td valign="top">Display all Tabs and Ends of lines (Dislays these hidden characters).</td>
+    </tr>
+
+    <tr>
+    <td valign="top">:set bg=dark<br />:set bg=light</td>
+    <td valign="top"><br /></td>
+    <td valign="top">VIM: choose color scheme for "dark" or "light" console background.</td>
+    </tr>
+    </tbody>
+    </table>
+    See full list of <a href="http://vimdoc.sourceforge.net/htmldoc/options.html">set options</a>
+
+<p>
+</p>
+<div class="labelbar">
+Advanced "vi" features:
+</div>
+
+          <h3>Interactive Command Examples:</h3>
+
+          <ul>
+            <li>
+              <b>Marking a line:</b>
+                  <br/>
+                  Any line can be "Book Marked" for a quick cursor
+                  return.
+                  <ul>
+                    <li>Type the letter "<b>m</b>" and any other
+                    letter to identify the line.</li>
+
+                    <li>This "marked" line can be referenced by the
+                    keystroke sequence "<b>'</b>" and the
+                    identifying letter.<br />
+                    Example: "<b>mt</b>" will mark a line by the
+                    identifier "t".<br />
+                    "<b>'t"</b> will return the cursor to this line
+                    at any time.<br />
+                    A block of text may be referred to by its
+                    marked lines. i.e.<b>'t,'b</b></li>
+
+                    <li>Write a marked block to a new file: <b>'t,'bw <i>newfile</i></b></li>
+                  </ul>
+            </li>
+
+            <li>
+              <b>vi line buffers:</b>
+              <br/>
+                  To capture lines into the buffer:
+                  <ul>
+                    <li>Single line: "<b>yy</b>" - yanks a single
+                    line (defined by current cursor position) into
+                    the buffer</li>
+
+                    <li>Multiple lines: "<b>y't</b>" - yanks from
+                    current cursor position to the line marked
+                    "t"</li>
+
+                    <li>Multiple lines: "<b>3yy</b>" - yank 3
+                    lines. Current line and two lines below
+                    it.</li>
+                  </ul>
+                  Note all lines deleted are also stored in numbered line buffers.
+                  <p>
+                  </p>
+                  Copy an entry in the buffer to the editing session:
+                  <ul>
+                    <li>"<b>p</b>" - place contents of latest entry to the buffer after current line defined by current cursor position. The buffer can be referenced by its number as well. The latest entry to the buffer is entry "1". Recall with the keystroke <tt>"1p</tt></li>
+                    <li>Each deleted line will end up in the vim line buffer.
+                    To recall the prior entry to the buffer use the keystroke: <tt>"2p</tt>. The prior entries to the buffer can all be referenced by its number. Each time an entry to the buffer is made, its position in the stack is incremented. Typically vim has nine (1-9) default "numbered" buffers.</li>
+                  </ul>
+            </li>
+
+            <li>
+              <b>vi named line buffers:</b>
+                <br/>
+                  Storage buffers can be named with letters of the alphabet: a-z.
+                  <br/>
+                  To capture lines into the buffer:
+                  <ul>
+                    <li>Single "yanked" line stored in buffer "a": <b>"ayy</b> - yanks a single line (defined by current cursor position) into the buffer named "a"</li>
+                    <li>Deleted line stored in buffer "b": <b>"bdd</b> - deletes a single line (defined by current cursor position) into the buffer named "a"</li>
+                    <li>Deletes 4 lines and stores in buffer "t": <b>"t4dd</b> - deletes four lines (defined by current cursor position) into the buffer named "a"</li>
+                  </ul>
+                  <br/>
+                  To paste lines from a named buffer:
+                  <ul>
+                    <li>Single line stored in buffer "a": <b>"ap</b> - paste contents of the buffer named "a" after the current line (defined by current cursor position)</li>
+                  </ul>
+            </li>
+
+            <li>
+              <b>vim: Shift a block of code left or right:</b>
+              <ul>
+                <li>Enter into visual mode by typing the letter "v"
+                at the top (or bottom) of the block of text to be
+                shifted.</li>
+
+                <li>Move the cursor to the bottom (or top) of the
+                block of text using "j", "k" or the arrow
+                keys.<br />
+                Tip: Select from the first collumn of the top line
+                and the last character of the line on the bottom
+                line.<br />
+                Zero ("0") will move the cursor to the first
+                character of a line and "$" will move the cursor to
+                the last character of the line.</li>
+
+                <li>Type &gt;&gt; to shift the block to the
+                right.<br />
+                Type &lt;&lt; to shift the block to the left.</li>
+              </ul>Note: The number of characters shifted is
+              controlled by the "shift width" setting. i.e. 4:
+              "<tt>:set sw=4</tt>"<br />
+              This can be placed in your <tt>$HOME/.vimrc</tt>
+              file.
+            </li>
+
+            <li>
+              <b>vim: Shift a block of code left or right (method #2):</b>
+              <ul>
+                <li><b>:20,40&gt;</b>
+                    <br/>Shift text from row 20 to 30, to the right
+                </li>
+                <li><b>:20,40&lt;</b>
+                    <br/>Shift text from row 20 to 30, to the left
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+<h3>Command Line Examples:</h3>
+
+<ul>
+<li><b>command options:</b>
+<br/>
+The vi command line interface is available by
+typing "<b>:</b>". Terminate with a carriage
+return.<br />
+Example commands:
+<ul>
+<li><b>:help <i>topic</i></b><br />
+    If the exact name is unknown, TAB completion
+    will cycle through the various options given
+    the first few letters. Ctrl-d will print the
+    complete list of possibilites.</li>
+</ul>
+</li>
+
+<li><b>Executing Unix commands in vi:</b>
+              <br/>
+                  Any UNIX command can be executed from the vi
+                  command line by typing an "!" before the UNIX
+                  command.<br />
+                  Examples:
+
+                  <ul>
+                    <li><b>:!pwd</b> - shows your current working directory.</li>
+                    <li><b>:!ls</b> - shows files in your current working directory.</li>
+                    <li><b>:sh</b> - open a new Bash shell. Editing session is suspended until you exit the shell. Execute all the commands you want and then return to the vim session.
+                  </ul>
+</li>
+
+<li><b>Reading and merging/including external text:</b>
+        <ul>
+        <li><b>:r <i>filename</i></b> - include the contents of an external file</li>
+
+        <li><b>:r !date</b> - reads the results from
+            the date command into a new line following the
+            cursor.</li>
+
+        <li><b>:r !ls -1</b> - Place after the
+            cursor, the current directory listing displayed
+            as a single column.</li>
+        </ul>
+</li>
+
+<li><b>Line numbers:</b>
+        <br/>
+                Lines may be referenced by their line numbers.
+                The last line in the file can be referenced by the
+                "$" sign.<br />
+                The entire file may be referenced by the block
+                "<b>1,$</b>" or "<b>%</b>"<br />
+                The current line is referred to as "<b>.</b>"<br />
+                A block of text may be referred to by its line numbers or its marked lines. i.e. <b>5,38</b> or <b>'t,'b</b>
+                <br/>Write out a block of text denoted by line numbers <b>:5,38 w <i>newfile</i></b>
+                <br/>Append a marked block to an existing file: <b>'t,'bw &gt;&gt; <i>filename</i></b>
+</li>
+
+<li><b>Find/Replace:</b>
+
+                <br/>
+                  Example:
+                  <ul>
+                    <li><b>:%s/fff/rrrrr/</b> - For all lines in a
+                    file, find string "fff" and replace with string
+                    "rrrrr" for the first instance on a line.</li>
+
+                    <li><b>:%s/fff/rrrrr/g</b> - For all lines in a
+                    file, find string "fff" and replace with string
+                    "rrrrr" for each instance on a line.</li>
+
+                    <li><b>:%s/fff/rrrrr/gc</b> - For all lines in
+                    a file, find string "fff" and replace with
+                    string "rrrrr" for each instance on a line. Ask
+                    for confirmation</li>
+
+                    <li><b>:%s/fff/rrrrr/gi</b> - For all lines in
+                    a file, find string "fff" and replace with
+                    string "rrrrr" for each instance on a line.
+                    Case insensitive.</li>
+
+                    <li><b>:'a,'bs/fff/rrrrr/gi</b> - For all lines
+                    between line marked "a" (ma) and line marked
+                    "b" (mb), find string "fff" and replace with
+                    string "rrrrr" for each instance on a line.
+                    Case insensitive.</li>
+
+                    <li><b>:5,20s/fff/rrrrr/gc</b> - For all lines
+                    between line 2 and line 20, find string "fff" 
+                    and replace with
+                    string "rrrrr" for each instance on a line.
+                    Confirm each change with y/n.</li>
+
+                    <li><b>:1,$s/$/XXX/</b> - For all lines in the file, append a tripple X (XXX)</li>
+
+                    <li><b>:1,$s/XXX$//</b> - For all lines in the file, remove the tripple X (XXX)</li>
+
+                    <li><b>:%s/ *$/</b> - For all lines in a file, delete blank spaces at end of line (there is a single space before the asterisk). Repeat with a tab instead of a space to delete trailing tabs. </li>
+
+                    <li><b>:%s/\(.*\):\(.*\)/\2:\1/g</b> - For all
+                    lines in a file, move last field delimited by
+                    ":" to the first field. Swap fields if only
+                    two.</li>
+
+                    <li><b>:%s#&lt;[^>]\+&gt;##g</b> - Find and remove all HTML tags but keep the text contents.
+                    </li>
+
+                    <li><b>:%s/^\(.*\)\n\1$/\1/</b> - Find and remove all duplicate lines
+                    </li>
+                  </ul>
+
+                 For more info type:
+                  <ul>
+                    <li><b>:help substitute</b></li>
+
+                    <li><b>:help pattern</b></li>
+
+                    <li><b>:help gdefault</b></li>
+
+                    <li><b>:help cmdline-ranges</b></li>
+                  </ul>
+</li>
+
+<li><b>Sorting:</b>
+                <br/>
+                  Example:
+                  <ul>
+                    <li>Mark a block of text at the top line and
+                    bottom line of the block of text. i.e. "<b>mt</b>" and
+                    "<b>mb</b>" on two separate lines. This text block is then referenced as <b>"'t,'b</b>.</li>
+                    <li>Sort lines in block:
+                        (man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=sort">sort</a>)
+                        <br /> <b>:'t,'b !sort</b>
+                    </li>
+                    <li>Reverse order of lines in block: 
+                        (man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=tac">tac</a>)
+                        <br /><b>:'t,'b !tac</b>
+                    </li>
+                    <li>Sort lines of text in a paragraph. Block of lines defining the paragraph are identified by the cursor as the top and the first blank line as the end of the paragraph. Place curson on the line "Blue chair" and type the following:
+                        <br /><b>!}sort</b>
+              <br/>
+              File to edit:
+              <pre class="code-box">
+Blue chair
+Red table
+Green grass
+Black stone
+
+Other stuff goes here...
+and here
+              </pre>
+              Becomes
+              <pre class="code-box">
+Black stone
+Blue chair
+Green grass
+Red table
+
+Other stuff goes here...
+and here
+              </pre>
+             Note that lines below the blank line delimeter are not sorted.
+                    </li>
+                    <li>Sort lines of text in a paragraph by the second collumn:
+                        <br/><b>!}sort -f -k2</b>
+                        <br/>option "-f" : ignore case
+                        <br/>option "-k" : list collumn number to sort by
+                        <br/>For a list of all options, see the <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=sort">sort man page</a>
+              <br/>
+              File in previous example becomes:
+              <pre class="code-box">
+Blue chair
+Green grass
+Black stone
+Red table
+
+Other stuff goes here...
+and here
+              </pre>
+                    </li>
+                    <li>Sort lines of text in a paragraph and arrange into four collumns:
+                        <br /><b>!}sort | pr -4t</b>
+                        <br />option -4 : four collumns
+                        <br />option -t : omit page headers and trailer
+                        <br/><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=pr">pr man page</a>
+              <br/>
+              File to edit:
+              <pre class="code-box">
+Blue
+Red
+Green
+Black
+Yellow
+Orange
+White
+Brown
+
+Other stuff goes here...
+and here
+              </pre>
+              Becomes
+              <pre class="code-box">
+Black		  Brown		    Orange	      White
+Blue		  Green		    Red		      Yellow
+
+
+Other stuff goes here...
+and here
+              </pre>
+             Note that lines below the blank line delimeter are not sorted.
+                    </li>
+                  </ul>
+</li>
+
+<li><b>Moving columns, manipulating fields and awk:</b>
+              <br/>
+             <b>:'t,. !awk '{print $3 " " $2 " " $1}'</b> -
+             This will reverse the order of the columns in the
+             block of text. The block of text is defined here as from the line marked with the keystroke <b>"bt"</b> and the current line (<b>"."</b>).
+             This text block is referenced as "<b>'t,.</b>"  
+             (man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=awk">awk</a>)
+             <pre class="code-box">
+              aaa bbb ccc              ccc bbb aaa
+              xxx yyy zzz   becomes-&gt;  zzz yyy xxx
+              111 222 333              333 222 111
+              </pre>
+</li>
+
+<li><b>Source Code Formatting:</b> C++/Java
+                  <ul>
+                    <li>Use vim visual text selection to mark the
+                    lines to format (beautify):
+
+                      <ul>
+                        <li>eg. Whole file:
+
+                          <ul>
+                            <li>Go to first line in file:
+                            <tt>shift-v</tt></li>
+
+                            <li>Go to last line in file:
+                            <tt>shift-g</tt></li>
+
+                            <li>Select the key equals:
+                            <tt>=</tt></li>
+                          </ul>
+                        </li>
+                      </ul>This will align all braces and
+                      indentations. For the equivalent in emacs see
+                      the <a href="LinuxTutorialXemacs.html">YoLinux emacs tutorial</a>.
+                    </li>
+                  </ul>
+</li>
+
+<li><b>Text Formatting:</b>
+
+                  <ul>
+                    <li>Mark a block of text at the top line and
+                    bottom line of the block. i.e. "<b>mt</b>" and
+                    "<b>mb</b>" on two separate lines.</li>
+
+                    <li>Example: "<b>:'t,'b !nroff</b>"</li>
+
+                    <li>You can insert nroff commands i.e.:
+
+                          <table class="box">
+                            <thead>
+                              <tr>
+                                <td>.ce 3</td>
+                                <td>Center the next three
+                                lines</td>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr>
+                                <td>.fi</td>
+
+                                <td>Fill text - left and right
+                                justify (default)</td>
+                              </tr>
+
+                              <tr>
+                                <td>.nf</td>
+
+                                <td>No Fill</td>
+                              </tr>
+
+                              <tr>
+                                <td>.ls 2</td>
+
+                                <td>Double line spacing</td>
+                              </tr>
+
+                              <tr>
+                                <td>.sp</td>
+
+                                <td>Single line space</td>
+                              </tr>
+
+                              <tr>
+                                <td>.sv 1.0i</td>
+
+                                <td>Vertical space at top of page
+                                space</td>
+                              </tr>
+
+                              <tr>
+                                <td>.ns</td>
+
+                                <td>Turn off spacing mode</td>
+                              </tr>
+
+                              <tr>
+                                <td>.rs</td>
+
+                                <td>Restore spacing mode</td>
+                              </tr>
+
+                              <tr>
+                                <td>.ll 6.0i</td>
+
+                                <td>Line length = 6 inches</td>
+                              </tr>
+
+                              <tr>
+                                <td>.in 1.0i</td>
+
+                                <td>Indent one inch</td>
+                              </tr>
+
+                              <tr>
+                                <td>.ti 1.0i</td>
+
+                                <td>Temporarily one time only
+                                indent one inch</td>
+                              </tr>
+
+                              <tr>
+                                <td>.pl 8.0i</td>
+
+                                <td>Page length = 8 inches</td>
+                              </tr>
+
+                              <tr>
+                                <td>.bp</td>
+
+                                <td>Page break</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      Example:
+                      <pre class="code-box">
+.fi
+.pl 2i
+.in 1.0i
+.ll 6.0i
+.ce
+Title to be centered
+.sp
+The following text bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla
+</pre>
+
+                      <p>Becomes:</p>
+                      <pre class="code-box">
+                         Title to be centered
+
+          The following text bla bla bla bla bla bla bla bla
+          bla  bla  bla  bla bla bla bla bla bla bla bla bla
+          bla bla bla bla bla bla bla bla bla  bla  bla  bla
+          bla  bla  bla  bla bla bla bla bla bla bla bla bla
+          bla bla bla bla bla bla bla bla bla  bla  bla  bla
+          bla bla bla bla
+
+
+</pre>
+                    </li>
+                  </ul>
+              man pages:
+              <ul>
+              <li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=nroff">nroff</a> - text formatter (emulate nroff command with groff)
+              </li>
+              <li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=troff">troff</a> - troff processor of the groff text formatting system
+              </li>
+              <li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=tbl">tbl</a> - table formatter (for troff)
+              </li>
+              </ul>
+              <p>
+              </p>
+</li>
+
+<li> <b>Text Width Formatting:</b>
+                  <ul>
+                    <li>Mark a block of text or reference a block by their line numbers and pipe them through <tt>fmt</tt>, a text formatter which splits lines on word boundaries. 
+                    </li>
+                    <li><b>:20,30 !fmt -80</b> will re-format the lines from line 20 to line 30 to wrap at an 80 collumn margin. Any line longer than 80 characters (eg a long URL), will not get split. A line split occurs at word delimiters such as a blank space.
+                    </li>
+                  </ul>
+              man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=fmt">fmt</a>
+</li>
+
+<li> <b>Spell Checking:</b>
+                  <ul>
+                    <li>Mark a block of text by marking the top
+                    line and bottom line of the block. i.e.
+                    "<b>mt</b>" and "<b>mb</b>" on two separate lines.</li>
+                    <li><b>:'t,'b !spell</b> will cause the block
+                    to be replaced with misspelled words.</li>
+                    <li>Press "<b>u</b>" to undo.</li>
+                    <li>Proceed to correct words misspelled.</li>
+                  </ul>
+              man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=aspell">aspell</a>
+</li>
+
+<li> <b>Vim/Vi Macros:</b>
+                  <b>:map letter commands_strung_together</b><br />
+                  <b>:map</b> - lists current key mappings<br />
+                  Example - <b>:map g n
+                  cwNEW_WORD{ctrl-v}{esc}i{ctrl-v}{CR}</b><br />
+                  This example would find the next search
+                  occurrence, change the word and insert a line
+                  feed after the word. The macro is invoked by
+                  typing the letter "g".
+
+                  <ul>
+                    <li>Control/Escape/Carriage control characters
+                    must be prefixed with ctrl-V.</li>
+
+                    <li>Choose a letter which is not used or
+                    important. (i.e. a poor choice would be "i" as
+                    this is used for insert)</li>
+                  </ul>
+</li>
+
+<li> <b>Double spacing:</b>
+
+              <ul>
+                <li><b>:%s/$/{ctrl-V}{CR}/g</b><br />
+                This command applies an extra carriage return at
+                the end of all lines</li>
+              </ul>
+            </li>
+
+            <li>
+              <b>Strip blanks at end of line:</b>
+              <ul>
+                <li><b>:%s/{TAB}*$//</b></li>
+              </ul>
+</li>
+
+<li> <b>Delete all lines beginning with or matching a pattern:</b>
+              <ul>
+                <li><b>:1,$ /^#/d</b>
+                    <br />
+                    Delete all (first to last line: 1,$ or g) comments lines in file. Delete all lines beginning (^) with "#" (specify text pattern).
+                </li>
+                <li><b>:g/#/d</b>
+                    <br />
+                    Delete all lines (g) containing comments (comments follow "#") in file. Delete all lines containing "#".
+                </li>
+                <li><b>:g!/^#/d</b>
+                    <br />
+                    Delete all lines except (g! or v) comment lines beginning (^) with "#".
+                </li>
+              </ul>
+</li>
+
+<li> <b>Strip DOS ctrl-M's:</b>
+              <ul>
+                <li><b>:1,$ s/{ctrl-V}{ctrl-M}//</b>
+              <br />
+              Note: In order to enter a control character, one
+              muust first enter ctrl-v. This is true throughout vi.
+              For example, if searching for a control character
+              (i.e. ctrl-m): <tt>/ctrl-v ctrl-M</tt> If generating
+              a macro and you need to enter esc without exiting the
+              vi command line the esc must be prefixed with a
+              ctrl-v: <tt>ctrl-v esc</tt>.
+                </li>
+              </ul>
+</li>
+
+<li> <b>Convert tabs to spaces:</b>
+              <ul>
+                <li><b>:% !expand -t4</b>
+                    <br/>convert tabs to four blank spaces for the whole file (%).
+                </li>
+                <li><b>:20,30 !expand -t4</b>
+                    <br/>convert tabs to four blank spaces for lines 20 through 30. 
+                </li>
+              </ul>
+            Man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=expand">expand</a></li>
+</li>
+
+<li> <b>Editing multiple files:</b>
+              <ul>
+                <li><b>vi file1 file2 file3</b></li>
+
+                <li><b>:n</b> Edit next file (file2)</li>
+
+                <li><b>:n</b> Edit next file (file3)</li>
+
+                <li><b>:rewind</b> Rewind to the first file (file1)<br/>or <b>shift-ctrl-~</b></li>
+                <li><b>:rewind!</b> Rewind to the first file (file1) without saving changes</li>
+              </ul>
+              Note: Named buffers from "yanked" and deleted lines are shared between files. Contents of unamed buffers are not. To save file changes when switching files <tt>:set autowrite</tt>
+</li>
+
+<li> <b>Line folding:</b>
+              <p>Many times one may encounter a file with folded
+              lines or may wish to fold lines. The following image
+              is of a file with folded lines where each "+"
+              represents a set of lines not viewed but a marker
+              line prefixed with a "+" is shown stating how many
+              lines have been folded and out of view. Folding helps
+              manage large files which are more easily managed when
+              text lines are grouped into "folds".</p>
+
+              <p>Example: <tt>vim
+              /usr/share/vim/vim63/plugin/netrw.vim</tt></p>
+
+              <p>
+               <img src="images/vim-folded-lines.gif" alt="VIM folded lines" />
+              </p>
+
+              <p>Keystrokes:</p>
+
+                  <table class="box">
+                    <thead>
+                      <tr>
+                        <th>Keystroke</th>
+
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>zR</td>
+
+                        <td>Unfold all folded lines in file.</td>
+                      </tr>
+
+                      <tr>
+                        <td>za</td>
+
+                        <td>Open/close (toggle) a folded group of
+                        lines.</td>
+                      </tr>
+
+                      <tr>
+                        <td>zA</td>
+
+                        <td>Open a closed fold or close an open
+                        fold recursively.</td>
+                      </tr>
+
+                      <tr>
+                        <td>zc</td>
+
+                        <td>Close a folded group of lines.</td>
+                      </tr>
+
+                      <tr>
+                        <td>zC</td>
+
+                        <td>Close all folded lines
+                        recursively.</td>
+                      </tr>
+
+                      <tr>
+                        <td>zd</td>
+
+                        <td>Delete a folded line.</td>
+                      </tr>
+
+                      <tr>
+                        <td>zD</td>
+
+                        <td>Delete all folded lines
+                        recursively.</td>
+                      </tr>
+
+                      <tr>
+                        <td>zE</td>
+
+                        <td>Eliminate all folded lines in
+                        file.</td>
+                      </tr>
+
+                      <tr>
+                        <td>zF</td>
+
+                        <td>Create "N" folded lines.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+</li>
+
+<li> <b>Hyper-Linking to include files:</b>
+
+              <ul>
+                <li>Place cursor over the file name (i.e.
+                <tt>#include "fileABC.h"</tt>)</li>
+
+                <li>Enter the letter combination: <b>gf</b><br />
+                (go <i>to</i> file)</li>
+              </ul>This will load file <tt>fileABC.h</tt> into vim.
+              Use the following entry in your <tt>~/.vimrc</tt>
+              file to define file paths. Change path to something
+              appropriate if necessary.
+              <pre class="code-box">
+"Recursively set the path of the project.
+set path=$PWD/**
+</pre>
+</li>
+
+<li> <b>Batch execution of vi from a command
+              file:</b><br />
+              Command file to change HTML file to lower case and
+              XHTML compliance:
+     <pre class="code-box">
+:1,$ s/&lt;HTML&gt;/&lt;html&gt;/g
+:1,$ s/&lt;\/HTML&gt;/&lt;\/html&gt;/g
+:1,$ s/&lt;HEAD&gt;/&lt;head&gt;/g
+:1,$ s/&lt;\/HEAD&gt;/&lt;\/head&gt;/g
+:1,$ s/&lt;TITLE&gt;/&lt;title&gt;/g
+:1,$ s/&lt;\/TITLE&gt;/&lt;\/title&gt;/g
+:1,$ s/&lt;BODY/&lt;body/g
+:1,$ s/&lt;\/BODY/&lt;\/body/g
+:1,$ s/&lt;UL&gt;/&lt;ul&gt;/g
+:1,$ s/&lt;\/UL&gt;/&lt;\/ul&gt;/g
+...
+..
+.
+:1,$ s/&lt;A HREF/&lt;a href/g
+:1,$ s/&lt;A NAME/&lt;a name/g
+:1,$ s/&lt;\/A&gt;/&lt;\/a&gt;/g
+:1,$ s/&lt;P&gt;/&lt;p&gt;/g
+:1,$ s/&lt;B&gt;/&lt;b&gt;/g
+:1,$ s/&lt;\/B&gt;/&lt;\/b&gt;/g
+:1,$ s/&lt;I&gt;/&lt;i&gt;/g
+:1,$ s/&lt;\/I&gt;/&lt;\/i&gt;/g
+:wq
+       
+</pre>
+              Execute: <tt>vi -e <i>file-name</i>.html &lt;
+              <a href="ViCommands-HtmlUpdate.txt">ViCommands-HtmlUpdate.txt</a></tt>
+
+              <p><font color="#FF0000">[Potential Pitfall]</font>:
+              This must be performed while vim has none of the
+              files open which are to be affected. If it does, vim
+              will error due to conflicts with the vim swap
+              file.</p>
+</li>
+</ul>
+
+<p>
+</p>
+<div class="labelbar">
+Tagging:
+</div>
+
+          <p>This functionality allows one to jump between files to
+          locate subroutines.</p>
+
+              <ul>
+                <li><b>ctags *.h *.c</b> This creates a file names
+                "tags".</li>
+              </ul>
+
+          <p>Edit the file using <b>vi</b>.</p>
+
+              <ul>
+                <li>Unix command line: <b><tt>vi -t &nbsp;
+                subroutine_name</tt></b> This will find the correct
+                file to edit.<br />
+                OR</li>
+
+                <li>Vi command line: <b><tt>:tag
+                subroutine_name</tt></b> This will jump from your
+                current file to the file containing the subroutine.
+                (short form <b><tt>:ta subroutine_name</tt></b>
+                )<br />
+                OR</li>
+
+                <li>By cursor position: <b>ctrl-]</b> Place cursor
+                on the first character of the subroutine name and
+                press <b>ctrl-]</b> This will jump to the file
+                containing the subroutine.<br />
+                  <b>Note:</b> The key combination <tt>ctrl-]</tt>
+                  is also the default telnet connection interrupt.
+                  To avoid this problem when using telnet block
+                  this telnet escape key by specifying NULL or a
+                  new escape key:
+
+                  <ul>
+                    <li><tt>telnet -E <i>file-name</i></tt></li>
+
+                    <li><tt>telnet -e "" <i>file-name</i></tt></li>
+                  </ul>
+                </li>
+              </ul>
+
+          <p>In all cases you will be entered into the correct file
+          and the cursor will be positioned at the subroutine
+          desired.<br />
+          If it is not working properly look at the "tags" file
+          created by <b>ctags</b>. Also the tag name (first column)
+          may be abbreviated for convenience. One may shorten the
+          significant characters using <b>:set
+          taglength=number</b></p>
+
+          <p>Tag Notes:</p>
+
+          <ul>
+            <li>A project may have a tags file which can be added
+            and referred to by: <b><tt>:set tags=tags\
+            /ad/src/project1.tags</tt></b><br />
+            A "\" must separate the file names.</li>
+
+            <li><b><tt>:set autowrite</tt></b> will automatically
+            save changes when jumping from file to file, otherwise
+            you need to use the <b>:w</b> command.</li>
+        
+            <li>Autowrite can be intentionally avoided by using "!" to avoid the save when switching files. Changes will be lost: <b>:ta! <i>next-tag</i></b></li>
+          </ul>
+
+          <p><b>vim tagging notes:</b> (These specific tag features
+          not available in vi)</p>
+
+          <table class="box">
+            <thead>
+              <tr>
+                <th>Tag Command</th>
+
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><tt>:tag <i>start-of-tag-name_</i>TAB</tt></td>
+
+                <td>Vim supports tag name completion. Start the
+                typing the tag name and then type the TAB key and
+                name completion will complete the tag name for
+                you.</td>
+              </tr>
+
+              <tr>
+                <td><tt>:tag /<i>search-string</i></tt></td>
+
+                <td>Jump to a tag name found by a search.</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><b><tt>ctrl-]</tt></b></td>
+
+                <td>The vim editor will jump into the tag to follow
+                it to a new position in the file or to a new
+                file.</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><b><tt>ctrl-t</tt></b></td>
+
+                <td>The vim editor will allow the user to jump back
+                a level.<br />
+                (or <tt>:pop</tt>)</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><b><tt>:tselect
+                <i>&lt;function-name&gt;</i></tt></b></td>
+
+                <td>When multiple entries exist in the tags file,
+                such as a function declaration in a header file and
+                a function definition (the function itself), the
+                operator can choose by issuing this command. The
+                user will be presented with all the references to
+                the function and the user will be prompted to enter
+                the number associated with the appropriate
+                one.</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><b><tt>:tnext</tt></b></td>
+
+                <td>When multiple answers are available you can go
+                to the next answer.</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><tt>:set ignorecase</tt><br />
+                (or <tt>:set ic</tt>)</td>
+
+                <td>The ignore case directive affects tagging.</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><tt>:tags</tt></td>
+
+                <td>Show tag stack (history)</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><tt>:4pop</tt></td>
+
+                <td>Jump to a particular position in the tag stack
+                (history).<br />
+                (jump to the 4th from bottom of tag stack
+                (history).<br />
+                The command "<tt>:pop</tt>" will move by default
+                "1" backwards in the stack (history).)<br />
+                or<br />
+                <tt>:4tag</tt><br />
+                (jump to the 4th from top of tag stack)</td>
+              </tr>
+
+              <tr>
+                <td><tt>:tnext</tt></td>
+
+                <td>Jump to next matching tag.<br />
+                (Also short form <tt>:tn</tt> and jump two
+                <tt>:2tnext</tt>)</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><tt>:tprevious</tt></td>
+
+                <td>Jump to previous matching tag.<br />
+                (Also short form <tt>:tp</tt> and jump two
+                <tt>:2tp</tt>)</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><tt>:tfirst</tt></td>
+
+                <td>Jump to first matching tag.<br />
+                (Also short form <tt>:tf</tt>, <tt>:trewind</tt>,
+                <tt>:tr</tt>)</td>
+              </tr>
+
+              <tr>
+                <td valign="top"><tt>:tlast</tt></td>
+
+                <td>Jump to last matching tag.<br />
+                (Also short form <tt>:tl</tt>)</td>
+              </tr>
+
+              <tr>
+                <td valign="top">
+                  <pre class="code">
+:set tags=./tags,./<i>subdir</i>/tags
+</pre>
+                </td>
+
+                <td>Using multiple tag files (one in each
+                directory).<br />
+                Allows one to specify all tags files in directory
+                tree: <tt>set tags=src/**/tags</tt><br />
+                Use Makefile to generate tags files as well as
+                compile in each directory.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Links:</p>
+
+          <ul>
+            <li><a href="http://vimdoc.sourceforge.net/htmldoc/usr_29.html">Vim docs - ctags</a></li>
+            <li>Man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=ctags">ctags</a></li>
+
+            <li><a href="http://vimdoc.sourceforge.net/htmldoc/tagsrch.html">vim/tag search</a></li>
+
+            <li><a href="http://www.softpanorama.org/Editors/ctags.shtml">ctags framework</a></li>
+          </ul>
+
+<p>
+</p>
+<div class="labelbar">
+The ctags utility:
+</div>
+
+          <p>There are more than one version of ctags out there.
+          The original Unix version, the GNU version and the
+          version that comes with vim. This discussion is about the
+          one that comes with vim. (default with Red Hat)</p>
+
+          <p>For use with C++:</p>
+
+          <ul>
+            <li>ctags version 5.5.4:
+              <pre class="code">
+   ctags *.cpp ../inc/*.h<br />
+              </pre>
+            </li>
+
+            <li>ctags version 5.0.1:
+              <pre class="code">
+   <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=ctags">ctags</a> --lang=c++ --c-types=+Ccdefgmnpstuvx *.cpp ../inc/*.h<br />
+</pre>
+            </li>
+          </ul>
+
+          <p>To generate a tags file for all files in all
+          subdirectories: <tt>ctags -R .</tt> <a name="EXRC" id=
+          "EXRC"></a></p>
+
+          <p>The ctags program which is written by the VIM team is
+          called " Exuberant Ctags" and supports the most features
+          in VIM.</p>
+
+          <p>Man page: <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=ctags">ctags</a> - Generate tag files for source code</p>
+
+<p>
+</p>
+<div class="labelbar">
+Defaults file:
+</div>
+
+          <p><b>VIM: <tt>$HOME/.exrc</tt></b></p>
+
+          <ul>
+            <li><tt>~/.vimrc</tt></li>
+            <li><tt>~/.gvimrc</tt></li>
+            <li><tt>~/.vim/</tt> (directory of vim config
+            files.)</li>
+          </ul>
+
+          <p><b>VI: <tt>$HOME/.exrc</tt></b></p>
+
+              Example:
+              <pre class="code-box">
+         set autoindent
+         set wrapmargin=0
+         map g hjlhjlhjlhlhjl
+         "
+         " S = save current vi buffer contents and run spell on it,
+         "     putting list of misspelled words at the end of the vi buffer.
+         map S G:w!^M:r!spell %^M
+         colorscheme desert
+         "Specify that a dark terminal background is being used.
+         set bg=dark
+        
+</pre>
+
+          <p>Notes:</p>
+
+          <ul>
+            <li>Look in <tt>/usr/share/vim/vim61/colors/</tt> for
+            available colorschemes.<br />
+            (I also like "colorscheme desert")</li>
+
+            <li>Alternate use of autoindent: <tt>set ai
+            sw=3</tt></li>
+          </ul>
+
+<p><a name="CSCOPE" id="CSCOPE"></a></p>
+<div class="labelbar">
+Using vim and cscope:
+</div>
+
+          <p>Cscope was developed to cross reference C source code.
+          It now can be used with C++ and Java and can interface
+          with vim.</p>
+
+          <p>Using Cscope to cross reference souce code will create
+          a database and allow you to traverse the source to find
+          calls to a function, occurances of a function, variable,
+          macros, class or object and their respective
+          declarations. Cscope offers more complete navigation than
+          ctags as it has more complete cross referencing.</p>
+
+          <p>Vim must be compiled with Cscope support. Red Hat
+          Enterprise Linux 5 (or CentOS 5), includes vim 7.0 with
+          cscope support. Earlier versions of Red Hat or Fedora RPM
+          does not support Cscope and thus must be compiled.</p>
+
+          <h4>Compiling Vim from source:</h4>
+
+          <ul>
+            <li>Download vim source from <a href="http://www.vim.org">http://vim.org</a></li>
+
+            <li><tt>tar xzf vim-7.0.tar.gz</tt></li>
+
+            <li><tt>cd vim70</tt></li>
+
+            <li><tt>./configure --prefix=/opt --enable-cscope</tt></li>
+
+            <li><tt>make</tt></li>
+
+            <li><tt>make install</tt></li>
+          </ul>
+
+          <h4>Using Cscope with vim:</h4>The Cscope database
+          (<tt>cscope.out</tt>) is generated the first time it is
+          invoked. Subsequent use will update the database based on
+          file changes.<br />
+          The database can be generated manually using the command
+          i.e.: <tt>cscope -b *.cpp *.h</tt> or <tt>cscope -b -R
+          .</tt>
+
+          <p>Invoke Cscope from within vim from the vim command
+          line. Type the following: <tt>:cscope find <i>search-type
+          search-string</i></tt> The short form of the command is
+          ":cs f" where the "search-type" is:</p>
+
+              <table class="box">
+                <thead>
+                  <tr>
+                    <th>Search Type</th>
+
+                    <th>Type short form</th>
+
+                    <th>Description</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>symbol</td>
+
+                    <td>s</td>
+
+                    <td>Find all references to a symbol</td>
+                  </tr>
+
+                  <tr>
+                    <td>global</td>
+
+                    <td>g</td>
+
+                    <td>Find global definition</td>
+                  </tr>
+
+                  <tr>
+                    <td>calls</td>
+
+                    <td>c</td>
+
+                    <td>Find calls of this function</td>
+                  </tr>
+
+                  <tr>
+                    <td>called</td>
+
+                    <td>d</td>
+
+                    <td>Find functions that the specified function
+                    calls</td>
+                  </tr>
+
+                  <tr>
+                    <td>text</td>
+
+                    <td>t</td>
+
+                    <td>Find specified text string</td>
+                  </tr>
+
+                  <tr>
+                    <td>file</td>
+
+                    <td>f</td>
+
+                    <td>Open file</td>
+                  </tr>
+
+                  <tr>
+                    <td>include</td>
+
+                    <td>i</td>
+
+                    <td>Find files that "#include" the specified
+                    file</td>
+                  </tr>
+                </tbody>
+              </table>
+            </dd>
+          </dl>
+
+          <p>Results of the Cscope query will be displayed at the
+          bottom of the vim screen.</p>
+
+          <ul>
+            <li>To jump to a result type the results number (+
+            enter)</li>
+
+            <li>Use tags commands to return after a jump to a
+            result: <tt>ctrl-t</tt><br />
+            To return to same spot as departure, use
+            <tt>ctrl-o</tt></li>
+
+            <li>To use "tags" navigation to search for words under
+            the cursor (ctrl-\ or ctrl-]) instead of using the vim command
+            line "<tt>:cscope</tt>" (and "ctrl-spaceBar" instead of
+            "<tt>:scscope</tt>"), use the vim plugin,
+              <tt><a href="http://cscope.sourceforge.net/cscope_maps.vim">cscope_maps.vim</a></tt> [<a href="src/cscope_maps.vim">cache</a>]<br />
+              When using this plugin, overlapping ctags navigation
+              will not be available. This should not be a problem
+              since cscope plugin navigation is the same but with
+              superior indexing and cross referenceing.<br />
+              Place this plugin in your directory
+              "<tt>$HOME/.vim/plugin</tt>"<br />
+              Plugin required for vim 5 and 6. This feature is
+              compiled in with vim 7.0 on Red Hat Enterprise Linux
+              5 and CentOS 5 and newer Linux OS's. Attempts to use
+              the plugin when not required will result in the
+              following error:
+
+              <p>
+                <tt>E568: duplicate cscope database not added</tt>
+              </p>
+            </li>
+
+            <li>Cycle through results:
+
+              <ul>
+                <li>Next result: <tt>:tnext</tt></li>
+
+                <li>Previous result: <tt>:tprevious</tt></li>
+              </ul>
+            </li>
+
+            <li>Create a split screen for Cscope results:
+            <tt>:scscope find <i>search-type
+            search-string</i></tt><br />
+            (Short form: <tt>:scs f <i>search-type
+            search-string</i></tt>)</li>
+
+            <li>Use command line argument "<tt>:cscope -R</tt>":
+            Scan subdirectories recursively</li>
+
+            <li>Use Cscope ncurses based GUI without vim:
+            <tt>cscope</tt>
+
+              <ul>
+                <li>ctrl-d: Exit Cscope GUI</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h4>Cscope command line arguments:</h4>
+
+              <table class="box">
+                <thead>
+                  <tr>
+                    <th>Argument</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>-R</td>
+
+                    <td>Scan subdirectories recursively</td>
+                  </tr>
+
+                  <tr>
+                    <td>-b</td>
+
+                    <td>Build the cross-reference only.</td>
+                  </tr>
+
+                  <tr>
+                    <td>-C</td>
+
+                    <td>Ignore letter case when searching.</td>
+                  </tr>
+
+                  <tr>
+                    <td>-f<tt>FileName</tt></td>
+
+                    <td>Specify Cscope database file name instead
+                    of default "cscope.out".</td>
+                  </tr>
+
+                  <tr>
+                    <td>-I<i>include-directories</i></td>
+
+                    <td>Look in "include-directories" for any
+                    #include files whose names do not begin with
+                    "/".</td>
+                  </tr>
+
+                  <tr>
+                    <td>-i<i>Files</i></td>
+
+                    <td>Scan specified files listed in "Files".
+                    File names are separated by linefeed. Cscope
+                    uses the default file name "cscope.files".</td>
+                  </tr>
+
+                  <tr>
+                    <td>-k</td>
+
+                    <td>Kernel mode ignores
+                    <tt>/usr/include</tt>.<br />
+                    Typical: <tt>cscope -b -q -k</tt></td>
+                  </tr>
+
+                  <tr>
+                    <td>-q</td>
+
+                    <td>create inverted index database for quick
+                    search for large projects.</td>
+                  </tr>
+
+                  <tr>
+                    <td>-s<i>DirectoryName</i></td>
+
+                    <td>Use specified directory for source code.
+                    Ignored if specified by "-i".</td>
+                  </tr>
+
+                  <tr>
+                    <td>-u</td>
+
+                    <td>Unconditionally build a new cross-reference
+                    file..</td>
+                  </tr>
+
+                  <tr>
+                    <td>-v</td>
+
+                    <td>Verbose mode.</td>
+                  </tr>
+
+                  <tr>
+                    <td><i>file1 file2 ...</i></td>
+
+                    <td>List files to cross reference on the
+                    command line.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+          <h4>Cscope environment variable:</h4>
+
+              <table class="box">
+                <thead>
+                  <tr>
+                    <th>Environment Variable</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>CSCOPE_EDITOR</td>
+                    <td>Editor to use: <tt>/usr/bin/vim</tt></td>
+                  </tr>
+
+                  <tr>
+                    <td>EDITOR</td>
+                    <td>Default: <tt>/usr/bin/vim</tt></td>
+                  </tr>
+
+                  <tr>
+                    <td>INCLUDEDIRS</td>
+                    <td>Colon-separated list of directories to
+                    search for #include files.</td>
+                  </tr>
+
+                  <tr>
+                    <td>SOURCEDIRS</td>
+                    <td>Colon-separated list of directories to
+                    search for additional source files.</td>
+                  </tr>
+
+                  <tr>
+                    <td>VPATH</td>
+                    <td>Colon-separated list of directories to
+                    search. If not set, cscope searches only in the
+                    current directory.</td>
+                  </tr>
+                </tbody>
+              </table>
+          <hr />
+
+          <p>Manually Generating file <tt>cscope.files</tt></p>
+
+          <p>
+              File: <tt>$HOME/bin/gen_cscope</tt> or
+              <tt>/opt/bin/gen_cscope</tt>
+          </p>
+
+          <pre class="code-box">
+#!/bin/bash
+find ./ -name "*.[ch]pp" -print &gt; cscope.files
+cscope -b -q -k
+</pre>
+              Generates <tt>cscope.files</tt> of ".cpp" and
+              ".hpp" source files for a C++ project.
+
+              <p>Note that this generates CScope files in the
+              current working directory. The CScope files are only
+              usefull if you begin the vim session in the same
+              directory. Thus if you have a heirarchy of
+              directories, perform this in the top directory and
+              reference the files to be edited on the command line
+              with the relative path from the same directory in
+              which the CScope files were generated.</p>
+            </dd>
+          </dl>
+          <hr />
+
+          <p>Also see:</p>
+
+          <ul>
+            <li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=cscope">cscope man page</a></li>
+            <li><a href="http://cscope.sourceforge.net">cscope home page</a></li>
+            <li><a href="http://cscope.sourceforge.net/large_projects.html">Using cscope with Linux kernel source code</a></li>
+          </ul>
+
+<p><a name="PLUGINS" id="PLUGINS"></a></p>
+<p>
+</p>
+<div class="labelbar">
+Vim plugins:
+</div>
+
+          <p><b>Vim default plugins:</b></p>
+
+          <p>Vim comes with some default plugins which can be found
+          in:</p>
+
+          <ul>
+            <li>Red Hat / CentOS / Fedora:
+
+              <ul>
+                <li>RHEL4/5:
+                <tt>/usr/share/vim/vim70/autoload/</tt></li>
+
+                <li>Fedora
+                3:<tt>/usr/share/vim/vim63/plugin/</tt></li>
+              </ul>
+            </li>
+
+            <li>Ubuntu / Debian:
+
+              <ul>
+                <li>Ubuntu 6.06:
+                <tt>/usr/share/vim/vim64/plugin/</tt></li>
+              </ul>
+            </li>
+          </ul>
+
+          <p><b>Additional custom plugins:</b></p>
+
+          <p>User added plugins are added to the user's local
+          directory: <tt>~/.vim/plugin/</tt> or
+          <tt>~/.vimrc/plugin/</tt></p>
+
+          <ul>
+            <li>Vim.org: <a href="http://www.vim.org/scripts/script_search_results.php?order_by=creation_date&amp;direction=descending">List of all plugins</a></li>
+          </ul>
+
+<p>
+</p>
+<div class="labelbar2">
+Default vim plugins:
+</div>
+
+          <h4>File Explorer / List Files:
+          <tt>explorer.vim</tt></h4>
+
+          <p>Help is available with the following command:
+          <tt>:help file-explorer</tt></p>
+
+              <table class="box">
+                <thead>
+                  <tr>
+                    <th>Command</th>
+
+                    <th>Description</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td valign="top">:Explore</td>
+
+                    <td valign="top">List files in your current
+                    directory</td>
+                  </tr>
+
+                  <tr>
+                    <td valign="top">:Explore
+                    <i>directory-name</i></td>
+
+                    <td valign="top">List files in specified
+                    directory</td>
+                  </tr>
+
+                  <tr>
+                    <td valign="top">:Vexplore</td>
+
+                    <td valign="top">Split with a new vertical
+                    window and then list files in your current
+                    directory</td>
+                  </tr>
+
+                  <tr>
+                    <td valign="top">:Sexplore</td>
+
+                    <td valign="top">Split with a new horizontal
+                    window and then list files in your current
+                    directory</td>
+                  </tr>
+                </tbody>
+              </table>
+
+          <p>The new window buffer created by ":Vexplore" and
+          ":Sexplore" can be closed with ":bd" (buffer delete).</p>
+
+<p>
+</p>
+<div class="labelbar2">
+Additional custom plugins:
+</div>
+
+          <h4>CScope: <tt>cscope_maps.vim</tt></h4>See cscope and
+          vim description and use <a href="#CSCOPE">in this tutorial above</a>.
+          <hr />
+
+          <h4>Tabbed pages: <tt>minibufexpl.vim</tt></h4>This
+          plugin allows you to open multiple text files and
+          accessed by their tabs displayed at the top of the frame.
+
+              <table class="box">
+                <thead>
+                  <tr>
+                    <th>Keystroke</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>:bn</td>
+                    <td>New buffer</td>
+                  </tr>
+
+                  <tr>
+                    <td>:bd</td>
+                    <td>Buffer delete</td>
+                  </tr>
+
+                  <tr>
+                    <td>:b3</td>
+                    <td>Go to buffer number 3</td>
+                  </tr>
+
+                  <tr>
+                    <td>ctrl-w followed by "k"</td>
+                    <td>New buffer. Puts curson in upper tabbed
+                    portion of window. Navigate with arrow keys or
+                    "h"/"l".</td>
+                  </tr>
+
+                  <tr>
+                    <td>:qa</td>
+                    <td>Quit vim out of all buffers</td>
+                  </tr>
+
+                  <tr>
+                    <td>tab</td>
+                    <td>The "tab" key jumps between tabbed
+                    buffers.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+          <p>Recommended <tt>~/.vimrc</tt> file entry:</p>
+
+                      <pre class="code-box">
+"Hide abandon buffers in order to not lose undo history.
+set hid
+</pre>
+              This vim directive will allow undo history to
+              remain when switching buffers.
+
+          <p>The new window buffer tab created can be closed with
+          ":bd" (buffer delete).</p>
+
+          <p>Links:</p>
+
+          <ul>
+            <li><a href="http://www.vim.org/scripts/script.php?script_id=159">minibufexpl plugin home page</a></li>
+          </ul>
+          <hr />
+
+          <h4>Alternate between the commensurate include and source
+          file: <tt>a.vim</tt></h4>Most usefull when used with the
+          vim plugin "minibufexpl.vim"
+
+          <p>Usefull for C/C++ programmers to switch between the
+          source ".cpp" and commensurate ".hpp" or ".h" file and
+          vice versa.</p>
+
+              <table class="box">
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>:A</td>
+                    <td>switches to the header file corresponding
+                    to the current file being edited (or vise
+                    versa)</td>
+                  </tr>
+
+                  <tr>
+                    <td>:AS</td>
+                    <td>splits and switches</td>
+                  </tr>
+
+                  <tr>
+                    <td>:AV</td>
+                    <td>vertical splits and switches</td>
+                  </tr>
+
+                  <tr>
+                    <td>:AT</td>
+                    <td>new tab and switches</td>
+                  </tr>
+
+                  <tr>
+                    <td>:AN</td>
+                    <td>cycles through matches</td>
+                  </tr>
+
+                  <tr>
+                    <td>:IH</td>
+                    <td>switches to file under cursor</td>
+                  </tr>
+
+                  <tr>
+                    <td>:IHS</td>
+                    <td>splits and switches</td>
+                  </tr>
+
+                  <tr>
+                    <td>:IHV</td>
+                    <td>vertical splits and switches</td>
+                  </tr>
+
+                  <tr>
+                    <td>:IHT</td>
+                    <td>new tab and switches</td>
+                  </tr>
+
+                  <tr>
+                    <td>:IHN</td>
+                    <td>cycles through matches</td>
+                  </tr>
+                </tbody>
+              </table>If you are editing <tt>fileX.c</tt> and you
+              enter ":A" in vim, you will be switched to the file
+              <tt>fileX.h</tt>
+
+          <p>Links:</p>
+          <ul>
+            <li><a href="http://www.vim.org/scripts/script.php?script_id=31">a.vim plugin home page</a></li>
+          </ul>
+
+          <hr />
+          <h4>Plug-in Installation:</h4>
+          Example of installation of <tt>a.vim</tt> and <tt>minibufexpl.vim</tt> plug-ins:
+          <ul>
+          <li><tt>mkdir -p ~/.vim/plugin</tt>
+          </li>
+          <li><tt>cd ~/.vim/plugin</tt>
+          </li>
+          <li><tt>wget -O a.vim http://www.vim.org/scripts/download_script.php?src_id=7218</tt>
+          </li>
+          <li><tt>wget -O minibufexpl.vim http://www.vim.org/scripts/download_script.php?src_id=3640</tt>
+          </li>
+          </ul>
+          Note that the URL of the plug-in can be found from the home page of the plug-in.
+
+<p>
+</p>
+<div class="labelbar">
+Vim tip:
+</div>
+
+          <p>Using a mousewheel with vim in an xterm. Place in file
+          <tt>$HOME/.Xdefaults</tt></p>
+
+           <pre class="code-box">
+XTerm*VT100.Translations: #override \n\ 
+: string("0x9b") string("[64~") \n\ 
+: string("0x9b") string("[65~")
+</pre>
+
+<p>
+</p>
+<div class="labelbar">
+Vim Variants and Other Similar Tools:
+</div>
+
+<ul>
+<li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=ed">ed</a> - line editor (works on one file at a time)
+</li>
+<li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=red">red</a> - restricted shell version of ed
+</li>
+<li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=tr">tr</a> - translate or delete characters
+</li>
+<li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=ex">ex</a> - line oriented version of vi. Works on multiple files.
+</li>
+<li><a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=sed">sed</a> - stream editor
+</li>
+<li>view - read only version of vi
+</li>
+<li>rview  - restricted view
+</li>
+<li>gvim - GUI version of VIM
+</li>
+<li>rvim - restricted vim
+</li>
+</ul>
+
+<p>
+</p>
+<div class="labelbar">
+Links:
+</div>
+
+          <ul>
+            <li><a href="LinuxTextEditors.html"><b>Linux Text Editors</b></a> - overview and list
+            </li>
+            <li><a href="http://www.vim.org">The vim home page</a></li>
+            <li><a href="http://www.jerrywang.net/vi/">Fast vi tutorial</a></li>
+            <li><a href="http://www.troubleshooters.com/lpm/200212/200212.htm">Troubleshooters.com: VI and VIM</a></li>
+            <li><a href="http://www.pinkjuice.com/howto/vimxml/">Vim as an XML/XHTML editor</a>
+            </li>
+          </ul>
+
+<p>
+</p>
+<div class="labelbar-h2">
+<img src="images/book40.gif" alt="vim books" /> Books:
+</div>
+
+              <table class="box" width="100%">
+                <tbody>
+                  <tr>
+                    <td><img src="../BOOKS/1503721.gif" alt=
+                    "ultimate guide to vi" /></td>
+                    <td valign="top">"The Ultimate Guide to VI and
+                    EX Text Editors"<br />
+                    Hewlet Packard Corporation<br />
+                    ISBN #0-8053-4460-8, Addison-Wesley Pub Co.,
+                    Benjamin/Cummings Publishing Company</td>
+
+                    <td valign="top">
+                    <a rel="nofollow" href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http://www.amazon.com/exec/obidos/ASIN/0805344608/&tag=yolinux-20"><img src="images/Amazon-BuyABook88x31.gif" alt="Amazon.com" /></a><br /></td>
+                  </tr>
+
+                  <tr>
+                    <td><img src="../BOOKS/059652983X.jpg" alt="Learn vi" /></td>
+
+                    <td valign="top">"Learning the vi and vim Editors (7th edition)
+                    <br />
+                    by Arnold Robbins, Elbert Hannah, Linda Lamb<br />
+                    ISBN #059652983X, O'Reilly</td>
+
+                    <td valign="top">
+                    <a rel="nofollow" href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http://www.amazon.com/exec/obidos/ASIN/059652983X/&tag=yolinux-20"><img src="images/Amazon-BuyABook88x31.gif" alt="Amazon.com" /></a><br /></td>
+                  </tr>
+
+                  <tr>
+                    <td><img src="../BOOKS/0735710015.01.MZZZZZZZ.jpg" alt="vi improved" /></td>
+
+                    <td valign="top">"Vi iMproved (VIM)<br />
+                    by Steve Oualline<br />
+                    ISBN #0735710015, Sams (1st edition)</td>
+
+                    <td valign="top">
+                    <a rel="nofollow" href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http://www.amazon.com/exec/obidos/ASIN/0735710015/&tag=yolinux-20"><img src="images/Amazon-BuyABook88x31.gif" alt="Amazon.com" /></a><br /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+<p>
+</p>
+<div class="lineHR">
+<p>
+</p>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables.
+*
+*  When url or identifier are not defined, the Disqus embed will use the window URL as the main identifier when creating a thread.
+*/ 
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//yolinux.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+
+</div> <!-- end content -->
+
+<div id="rightcol">
+<!-- AddThis Button BEGIN -->
+<div id="bookmark">
+&nbsp;&nbsp;&nbsp;
+<br />
+<a rel="nofollow" href="http://www.addthis.com/bookmark.php?v=250&pub=yolinux" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-bookmark-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=yolinux">
+</script>
+</div>
+<!-- AddThis Button END -->
+
+<p>
+</p>
+<p>
+<font color="#505050">Advertisements</font>
+</p>
+<iframe class="adframe" scrolling="no" allowTransparency="true"
+marginheight="0" marginwidth="0"
+width="160" frameborder="0" height="600"
+style='border:none;width:160;height:600;padding:0;'
+src="/ADVERTISING/iframe160px-MediaDotNet.html">
+</iframe>
+
+<p>
+</p>
+<!-- 
+<script type="text/javascript">
+var jobthread_widget_title = "Jobs";
+var jobthread_widget_outer_style = "background-color:#dddddd;border:1px solid #999999;width:160px;";
+var jobthread_widget_inner_style = "background-color:#ffffff;color:#666666;border:1px solid #999999;margin-left:10px;margin-right:10px;padding:10px 10px 2px 8px;font:11px Arial, Helvetica, Sans-serif;line-height:16px;";
+var jobthread_widget_title_style = "color:#313131;font-weight:bold;";
+var jobthread_widget_link_style = "color:#0464bb;font-size:11px;font-weight:normal;text-decoration:none;border:none;";
+var jobthread_widget_top_style = "padding-top:8px;";
+var jobthread_widget_bottom_style = "padding-bottom:4px;";
+</script>
+<script type="text/javascript" src="http://edge.jobthread.com/widget/?id=c0e4b3&num_jobs=10"></script>
+//-->
+
+<p>
+</p>
+
+<p>
+<div align="center">
+<a rel="nofollow" href="http://www.lpmagazine.org"><img src="images/LinuxPlusMagazine.gif" border="none" /></a>
+</div>
+</p>
+<p>&nbsp;</p>
+</div> <!-- end rightcol  -->
+</div> <!-- end row -->
+
+<div class="row">
+<div id="yo-footer">
+<div class="col-sm-4">
+<font size="-1" color="#ffcc33">
+<b>
+<a class="footer" href="http://www.yolinux.com">YoLinux.com Home Page</a>
+<br />
+<a class="footer" href="http://www.yolinux.com/TUTORIALS/">YoLinux Tutorial Index</a> |
+<a class="footer" href="http://www.yolinux.com/YoLinux-Terms.html">Terms</a>
+<br />
+<a class="footer" href="http://www.yolinux.com/privacy.html">Privacy Policy</a> |
+<a class="footer" href="http://www.yolinux.com/YoLinux-Advertising.html">Advertise with us</a> | 
+<a class="footer" href="http://www.yolinux.com/YoLinuxEmailForm.html">Feedback Form</a> |
+</b>
+<br />
+Unauthorized copying or redistribution prohibited.
+</font>
+</div> <!-- end col-sm-4 -->
+
+<div class="col-sm-4">
+<table class="borderless">
+<tr>
+<td align="center" valign="bottom">
+   <script src="http://www.stumbleupon.com/hostedbadge.php?s=5"></script>
+</td>
+<td align="center" valign="bottom">
+<p>
+</p>
+<!-- AddThis Button BEGIN -->
+<a rel="nofollow" href="http://www.addthis.com/bookmark.php?v=250&pub=yolinux" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-bookmark-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=yolinux">
+</script>
+<!-- AddThis Button END -->
+</td>
+</tr>
+</table>
+</div> <!-- end col-sm-4 -->
+
+<div class="col-sm-4">
+<div align="right">
+<font size="-1" color="#ffcc33"><a class="footer" href="#TOP">to top of page</a></font>
+<br />
+<script type="text/javascript"><!--
+google_ad_client = "pub-8567479315106986";
+/* 234x60, created 4/23/10 */
+google_ad_slot = "8214196957";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div> <!-- end col-sm-4 -->
+
+</div> <!-- end yo-footer -->
+
+</div>
+<div id="copyright">
+<p class="copyright">
+Copyright &copy; 1999 - 2018 by <i>Greg Ippolito</i>
+</p>
+</div>
+<p>
+<img src="images/vipower.gif" alt="vi power" />
+</p>
+</div> <!-- end container-fluid -->
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+  var _qevents = _qevents || [];
+
+  (function() {
+   var elem = document.createElement('script');
+
+   elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+   elem.async = true;
+   elem.type = "text/javascript";
+   var scpt = document.getElementsByTagName('script')[0];
+   scpt.parentNode.insertBefore(elem, scpt);  
+  })();
+</script>
+<script type="text/javascript">
+_qevents.push( { qacct:"p-ebIBcaVUngFBQ"} );
+</script>
+<noscript>
+<div style="display: none;"><img src="//pixel.quantserve.com/pixel/p-ebIBcaVUngFBQ.gif" height="1" width="1" alt="Quantcast"/></div>
+</noscript>
+<!-- End Quantcast tag -->
+
+
+<!-- Start Google +1 tag -->
+<!-- Place this tag in your head or just before your close body tag -->
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<!-- End Google +1 tag -->
+
+
+<!-- Start Google Analytics tag -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3317450-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<!-- End Google Analytics tag -->
+
+<!-- Start Advertise.com InterYield tag -->
+<!-- script src="http://interyield.td573.com/InterYield/bindevent.do?e=click&affiliate=gregipIY&subid=yolinux&ecpm=0&debug=false&snoozeMinutes=1&adCountIntervalHours=24&maxAdCountsPerInterval=2&pop=under&attributionDisabled=true&endpoint=http%3A%2F%2Finteryield.td573.com" type="text/javascript"></script -->
+<!-- End Advertise.com InterYield tag -->
+
+<!-- Google auto ads - turn it on -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8567479315106986",
+          enable_page_level_ads: true
+     });
+</script>
+
+</body>
+</html>
