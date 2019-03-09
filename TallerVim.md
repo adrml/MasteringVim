@@ -7,10 +7,16 @@ date: sáb mar  9 19:29:38 CET 2019
 # Moverse por el archivo
 
 ---
-Keystrokes: Acción
-h/j/k/l: Mueve el cursor izquierda/abajo/arriba/derecha
-barra espaciadora: Mueve el cursor a la izquierda un espacio.
--/+: Mueve el cursor abajo/arriba en la primera columna.
+Keystrokes: Acción  
+h/j/k/l: Mueve el cursor izquierda/abajo/arriba/derecha.  
+barra espaciadora: Mueve el cursor a la izquierda un espacio.  
+-/+: Mueve el cursor abajo/arriba en la primera columna.  
+ctrl-d: Desplaza hacia abajo la mitad de la pantalla, en caso de poner un número precediendo el comando, solo descenderá el número de líneas indicado.  
+ctrl-u: Desplaza hacia arriba la mitad de la pantalla, en caso de poner un número precediendo el comando, solo ascenderá el número de líneas indicado.  
+ctrl-f: Desplaza hacia abajo una pantalla, en caso de poner un número precediendo el comando, se descenderá ese número de pantallas.  
+ctrl-b: Desplaza hacia arriba una pantalla, en caso de poner un número precediendo el comando, se ascenderá ese número de pantallas.  
+ctrl-y: Desplaza hacia abajo una línea, en caso de poner un número precediendo el comando se descenderá ese número de líneas.  
+ctrl-e: Desplaza hacia arriba una línea, en caso de poner un número precediendo el comando se ascenderá ese número de líneas.  
 
 ---
 
