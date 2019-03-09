@@ -21,9 +21,14 @@ date: sáb mar  9 19:29:38 CET 2019
 | M | Mueve el cursor al centro de la página. |
 | H | Mueve el cursor al inicio de la página. |
 | L | Mueve el cursor al final de la página. |
-| W | Mueve el cursor hasta la siguiente palabra. En caso de ir precedido por un número, replicara esa acción ese número de veces.(Delimitado por espacios.) |
-| w | Mueve el cursor hasta la siguiente palabra. En caso de ir precedido por un número, replicara esa acción ese número de veces.(Delimitado por los carácteres no alfanuméricos.) |
-
+| W | Mueve el cursor hasta la siguiente palabra. En caso de ir precedido por un número, replicará esa acción ese número de veces.(Delimitado por espacios.) |
+| w | Mueve el cursor hasta la siguiente palabra. En caso de ir precedido por un número, replicará esa acción ese número de veces.(Delimitado por los carácteres no alfanuméricos.) |
+| B | Mueve el cursor hasta la palabra anterior. En caso de ir precedido por un número, replicará esa acción ese número de veces.(Delimitado por espacios.) |
+| b | Mueve el cursor hasta la palabra anterior. En caso de ir precedido por un número, replicará esa acción ese número de veces.(Delimitado por los carácteres no alfanuméricos.) |
+| E | Mueve el cursor hasta el final de la palabra. En caso de ir precedido por un número, replicará esa acción ese número de veces.(Delimitado por los espacios.) |
+| e | Mueve el cursor hasta el final de la palabra. En caso de ir precedido por un número, replicará esa acción ese número de veces.(Delimitado por los carácteres no alfanuméricos.) |
+| 0 | Mueve el cursor al inicio de la línea. |
+| :[num] | Mueve el cursor a la línea indicada por [num]. |
 ---
 
 # Editar el contenido del archivo 
