@@ -97,5 +97,14 @@ Para grabar nuestra propia macro tendremos que hacer uso de la tecla **Q** , seg
 
 Por ejemplo:```Qa``` 
 
-Empezará a grabar nuestras acciones en la tecla.A partir de aqui tenemos que ejecutar todos los comandos que queramos que registre la macro 
+Empezará a grabar nuestras acciones en la tecla **a**.A partir de aqui tenemos que ejecutar todos los comandos que queramos que registre la macro 
 para ejecutarlos en bloque posteriormente
+
+## Ejecutar Macros 
+
+Ejecutar macros en vim es casi tan sencillo como presionar la tecla a la que se la hemos asignado precedido por la tecla ```@``` , siguiendo el ejemplo anterior , para llamar a la macro grabada en **a**
+
+Por ejemplo:```@a```
+
+Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
+
