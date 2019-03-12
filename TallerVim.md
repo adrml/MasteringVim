@@ -85,6 +85,9 @@ date: sáb mar  9 19:29:38 CET 2019
 | S | Sustituye la línea completa en la que está ubicada el cursor. En caso de ir precedido por un número, eliminará tantas líneas como se le indique. |
 | J | Une la línea actual y la siguiente(o siguientes en caso de ir precedido por un número) y las une en una sola. | 
 | ~ | Alterna entre mayúsculas y minúsculas en el carácter sobre el que este posicionado el cursor. |
+| ctrl-a | Aumenta un número bajo el cursor. |
+| ctrl-x | Disminuye un número bajo el cursor. |
+| . | Repite el último comando ejecutado. |
 
 # Comandos combinados
 
