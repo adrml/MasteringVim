@@ -60,7 +60,6 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` U ```| Deshace todos los cambios de la línea actual. |
 |``` dd ```| Elimina la línea actual. En caso de ir precedida por un número, eliminará el número de líneas indicado. (Y la/s almacena en un buffer.) |
 |``` D / d$ ```| Elimina el contenido de la línea actual, a partir del cursor. |
-<<<<<<< HEAD
 |``` dw ```| Elimina la palabra a partir del cursor. En caso de ir precedido por un número eliminará el número de palabras indicado. (Sigue las mismas reglas que **w** y **W**.) |
 |``` d- ```| Elimina la línea actual y la anterior. |
 |``` dfx ```| Elimina desde el cursor hasta la próxima aparición de la letra **x**. |
@@ -77,12 +76,10 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` c/x ```| Elimina desde el cursor hasta la próxima aparición de **x**, sin eliminar este, y entra en el modo inserción. |
 |``` x ```| Elimina el carácter sobre el que está el cursor. |
 |``` X ```| Elimina el carácter anterior al cursor. |
-=======
 |``` cc ```| Elimina la línea actual. En caso de ir precedida por un número, eliminará el número de líneas indicado, y entra en el modo inserción. |
 |``` C / c$ ```| Elimina el contenido de la línea actual, a partir de cursor, y entra en el modo inserción. | 
 |``` x ```| elimina el carácter sobre el que está el cursor. |
 |``` X ```| elimina el carácter anterior al cursor. |
->>>>>>> 3204b3a9997b74f026c05932d2971996931c177f
 |``` Y / yy ```| Copia el contenido de la línea actual en el buffer principal. En caso de ir precedido por un número, copiara tantas líneas como se indique. |
 |``` p ```| Pega lo almacenado en el buffer principal a partir de la posición del cursor. En caso de ir precedido por un número, lo pegará ese número de veces. |
 |``` P ```| Pega lo almacenado en el buffer principal antes de la posición del cursor. En caso de ir precedido por un número lo pegará tantas veces como se le indique. |
@@ -99,6 +96,7 @@ date: sáb mar  9 19:29:38 CET 2019
 # Comandos combinados
 
 En algunos casos, como con los comandos ```c```, ```d``` o ```f``` una vez ejecutados, vim se queda esperando a una segunda acción, como podría ser, la afectación de la línea entera, o utilizando ciertos patrones que se mostrarán a continuación.
+
 | Keystrokes | Acción |
 | ---------- | -------| 
 |``` *w ```| Trabaja con la palabra a partir del cursor. En caso de ir precedido por un número eliminará el número de palabras indicado, y entra en el modo inserción.  (Sigue las mismas reglas que "w" y "W".) |
@@ -109,12 +107,14 @@ En algunos casos, como con los comandos ```c```, ```d``` o ```f``` una vez ejecu
 |``` */x ```| Trabaja  con lo seleccionado a partir de el cursor hasta la próxima aparición de "x", sin afectar a este, y entra en el modo inserción. |
 
 > Donde el  * se sustituiría por la acción a realizar.
+
 # Macros 
 
 En Vim una macro es un conjunto de comandos que pueden realizarse mediante un comando y/o una combinación de teclas.
 
 Para grabar nuestra propia macro tendremos que hacer uso de la tecla **Q** , seguido del caracter al que queremos asignar la macro que vamos a grabar.
 
-Por ejemplo:```Qa``` Empezará a grabar nuestras acciones en la tecla . A partir de aqui tenemos que ejecutar todos los comandos que queramos que registre la macro 
+Por ejemplo:```Qa``` 
 
+Empezará a grabar nuestras acciones en la tecla.A partir de aqui tenemos que ejecutar todos los comandos que queramos que registre la macro 
 para ejecutarlos en bloque posteriormente
