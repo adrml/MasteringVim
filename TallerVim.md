@@ -30,7 +30,7 @@ date: sáb mar  9 19:29:38 CET 2019
 | 0 | Mueve el cursor al inicio de la línea. |
 | :[num] | Mueve el cursor a la línea indicada por [num]. |
 | $ | Mueve el cursor al final de la línea. |
-| ) | Mueve el cursor al inicio de la siguiente frase. (Delimitado por '.','?','!'.) |
+| ) | Mueve el cursor al inicio de la siguiente frase. (Delimitado por ```.```,'?','!'.) |
 | ( | Mueve el cursor al inicio de la frase actual. |
 | } | Mueve el cursor al inicio del siguiente párrafo. (Delimitado por líneas en blanco y las macros nroff **Mirar NROFF Macros**.) |
 | { | Mueve el cursor al inicio del párrafo actual. |
