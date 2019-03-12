@@ -21,32 +21,33 @@ date: sáb mar  9 19:29:38 CET 2019
 |```M``` | Mueve el cursor al centro de la página. |
 |```H``` | Mueve el cursor al inicio de la página. |
 |```L``` | Mueve el cursor al final de la página. |
-|``` W ```| Mueve el cursor hasta la siguiente palabra. (Delimitado por espacios.) |
-|``` w ```| Mueve el cursor hasta la siguiente palabra. (Delimitado por los carácteres no alfanuméricos.) |
-|``` B ```| Mueve el cursor hasta la palabra anterior. (Delimitado por espacios.) |
-|``` b ```| Mueve el cursor hasta la palabra anterior. (Delimitado por los carácteres no alfanuméricos.) |
-|``` E ```| Mueve el cursor hasta el final de la palabra. (Delimitado por los espacios.) |
-|``` e ```| Mueve el cursor hasta el final de la palabra. (Delimitado por los carácteres no alfanuméricos.) |
+|``` W ```| Mueve el cursor hasta la siguiente palabra. *Delimitado por espacios.* |
+|``` w ```| Mueve el cursor hasta la siguiente palabra. *Delimitado por los carácteres no alfanuméricos.* |
+|``` B ```| Mueve el cursor hasta la palabra anterior. *Delimitado por espacios.* |
+|``` b ```| Mueve el cursor hasta la palabra anterior. *Delimitado por los carácteres no alfanuméricos.* |
+|``` E ```| Mueve el cursor hasta el final de la palabra. *Delimitado por los espacios.* |
+|``` e ```| Mueve el cursor hasta el final de la palabra. *Delimitado por los carácteres no alfanuméricos.* |
 |``` 0 ```| Mueve el cursor al inicio de la línea. |
 |``` :[num] ```| Mueve el cursor a la línea indicada por [num]. |
 |``` $ ```| Mueve el cursor al final de la línea. |
-|``` ) ```| Mueve el cursor al inicio de la siguiente frase. (Delimitado por ```.```,'?','!'.) |
-|``` ( ```| Mueve el cursor al inicio de la frase actual. |
-|``` } ```| Mueve el cursor al inicio del siguiente párrafo. (Delimitado por líneas en blanco.) |
+|``` * ```| Mueve el cursor al inicio de la siguiente frase. *Delimitado por ```.```,```?```,```!```.* |
+|``` * ```| Mueve el cursor al inicio de la frase actual. |
+|``` } ```| Mueve el cursor al inicio del siguiente párrafo. *Delimitado por líneas en blanco.* |
 |``` { ```| Mueve el cursor al inicio del párrafo actual. |
 |``` ]] ```| Mueve el cursor al inicio de la siguiente sección. |
 |``` [[ ```| Mueve el cursor al inicio de la sección actual. |
 |``` G ```| Mueve el cursor al final del fichero. |
 |``` % ```| Mueve el cursor al cierre/inicio del paréntesis/corchete/etc, actual. |
 |``` '. ```| Mueve el cursor a la última línea modificada. |
-|``` m ```| Marca la línea donde esta ubicado el cursor. Es necesario, identificarlo con una letra. (Ejemplo: Con **ma**, marcaríamos la línea actual con la letra a.) |
-|``` ' ```| Mueve el cursor a la línea marcada que le hemos indicado. (Ejemplo: Con **'a**, nos moveríamos a la línea que hemos marcado previamente con esa letra.) |
+|``` m ```| Marca la línea donde esta ubicado el cursor. Es necesario, identificarlo con una letra. *Ejemplo: Con **ma**, marcaríamos la línea actual con la letra a.* |
+|``` ' ```| Mueve el cursor a la línea marcada que le hemos indicado. *Ejemplo: Con **'a**, nos moveríamos a la línea que hemos marcado previamente con esa letra.* |
 |``` ]' ```| Mueve el cursor a la siguiente línea marcada. |
 |``` [' ```| Mueve el cursor a la anterior línea marcada. |
 ---
 
 # Editar el contenido del archivo 
 
+---
 | Keystrokes | Acción |
 | ---------- | -------| 
 |``` : ```| Abre el modo inserción en la ubicación actual del cursor. |
@@ -72,9 +73,11 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` ctrl-a ```| Aumenta un número bajo el cursor. |
 |``` ctrl-x ```| Disminuye un número bajo el cursor. |
 |``` . ```| Repite el último comando ejecutado. |
+---
 
 # Comandos combinados
 
+---
 En algunos casos, como con los comandos ```c```, ```d``` o ```f``` una vez ejecutados, vim se queda esperando a una segunda acción, como podría ser, la afectación de la línea entera, o utilizando ciertos patrones que se mostrarán a continuación.
 
 | Keystrokes | Acción |
@@ -89,7 +92,9 @@ En algunos casos, como con los comandos ```c```, ```d``` o ```f``` una vez ejecu
 
 > Donde el  * se sustituiría por la acción a realizar.
 
+---
 # Macros 
+---
 
 En Vim una macro es un conjunto de comandos que pueden realizarse mediante un comando y/o una combinación de teclas.
 
@@ -108,6 +113,7 @@ Por ejemplo&rarr;```@a```
 
 Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 
+---
 # Archivo vimrc
 
 ```vimrc
@@ -183,4 +189,4 @@ Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 			call system('git push')
 		endfun
 ```
-
+---
