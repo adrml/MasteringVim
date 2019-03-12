@@ -114,7 +114,7 @@ En Vim una macro es un conjunto de comandos que pueden realizarse mediante un co
 
 Para grabar nuestra propia macro tendremos que hacer uso de la tecla **Q** , seguido del caracter al que queremos asignar la macro que vamos a grabar.
 
-Por ejemplo:```Qa``` 
+Por ejemplo&rarr;```Qa``` 
 
 Empezará a grabar nuestras acciones en la tecla **a**.A partir de aqui tenemos que ejecutar todos los comandos que queramos que registre la macro 
 para ejecutarlos en bloque posteriormente
@@ -123,7 +123,83 @@ para ejecutarlos en bloque posteriormente
 
 Ejecutar macros en vim es casi tan sencillo como presionar la tecla a la que se la hemos asignado precedido por la tecla ```@``` , siguiendo el ejemplo anterior , para llamar a la macro grabada en **a**
 
-Por ejemplo:```@a```
+Por ejemplo&rarr;```@a```
 
 Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
+
+# Archivo vimrc
+
+```vimrc
+		set nocompatible              " be iMproved, required
+		filetype off                  " required
+		filetype plugin on
+		" set the runtime path to include Vundle and initialize
+		set rtp+=~/.vim/bundle/Vundle.vim
+		call vundle#begin()
+
+		" let Vundle manage Vundle, required
+		Plugin 'VundleVim/Vundle.vim'
+		Plugin 'scrooloose/nerdtree'
+		Plugin 'raimondi/delimitmate'
+		Plugin 'yggdroot/indentline'
+		Plugin 'itchyny/lightline.vim'
+		Plugin 'othree/xml.vim.git'
+		Plugin 'moiatgit/vim-rst-sections.git'
+		Plugin 'mattn/emmet-vim'
+		Plugin 'scrooloose/nerdcommenter'
+		Plugin 'sql.vim--Stinson'
+
+		" All of your Plugins must be added before the following line
+		call vundle#end()            " required
+		filetype plugin indent on    " required
+		nnoremap <S-n> :NERDTreeToggle <CR>
+		nnoremap <S-Left> :tabprevious<CR>
+		nnoremap <S-Right> :tabnext<CR>
+		nnoremap <S-Up> :tabnew<CR>
+		nnoremap <S-Down> :tabclose<CR>
+		map <S-Q> :w <bar> :autocmd BufWritePost * call AutoCommit()<CR>
+		"colorscheme sahara 
+		syntax on
+		"Habilitar paleta de colores 256bits 
+		if $COLORTERM =='gnome-terminal'
+			set t_Co=256
+		endif
+
+		"try 
+			"colorscheme sahara
+		"catch
+		"endtry
+		"
+		"mapear en modo normal el espacio a / y el ctrl+espacio a ? para buscar
+		map <space> /
+		map <C-Space> ?
+		"set background=dark 
+		"" Encoding
+		set encoding=utf-8
+		"Colores indentación
+		let g:indentLine_color_term=196
+		let g:indentLine_char='└'
+		let g:user_emmet_mode='a'
+		"color barra
+		set laststatus =2
+		let g:lightline = {
+		\'colorscheme': 'solarized',
+		\}
+		set visualbell
+		"Highlight en las busquedas
+		set hlsearch  
+		"Mejora la busqueda
+		set incsearch
+		"Quita ruido de errores
+		set noerrorbells
+
+		set omnifunc=syntaxcomplete#Complete
+		function! AutoCommit()
+			call system('git rev-parse --git-dir > /dev/null 2>&1')
+			let message = 'ADRUpdated ' . expand('%:.')
+			call system('git add ' . expand('%:p'))
+			call system('git commit -m ' . shellescape(message, 1))
+			call system('git push')
+		endfun
+```
 
