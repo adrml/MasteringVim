@@ -18,9 +18,9 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` ctrl-b ```| Desplaza hacia arriba una pantalla, en caso de poner un número precediendo el comando, se ascenderá ese número de pantallas. |  
 |``` ctrl-y ```| Desplaza hacia abajo una línea, en caso de poner un número precediendo el comando se descenderá ese número de líneas. |  
 |``` ctrl-e ```| Desplaza hacia arriba una línea, en caso de poner un número precediendo el comando se ascenderá ese número de líneas. |  
-|``` ```M``` | Mueve el cursor al centro de la página. |
-|``` ```H``` | Mueve el cursor al inicio de la página. |
-|``` ```L``` | Mueve el cursor al final de la página. |
+|```M``` | Mueve el cursor al centro de la página. |
+|```H``` | Mueve el cursor al inicio de la página. |
+|```L``` | Mueve el cursor al final de la página. |
 |``` W ```| Mueve el cursor hasta la siguiente palabra. En caso de ir precedido por un número, replicará esa acción ese número de veces. (Delimitado por espacios.) |
 |``` w ```| Mueve el cursor hasta la siguiente palabra. En caso de ir precedido por un número, replicará esa acción ese número de veces. (Delimitado por los carácteres no alfanuméricos.) |
 |``` B ```| Mueve el cursor hasta la palabra anterior. En caso de ir precedido por un número, replicará esa acción ese número de veces. (Delimitado por espacios.) |
