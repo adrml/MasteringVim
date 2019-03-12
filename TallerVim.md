@@ -12,12 +12,12 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` h/j/k/l ```| Mueve el cursor izquierda/abajo/arriba/derecha. |  
 |``` barra espaciadora ```| Mueve el cursor a la izquierda un espacio. |  
 |``` -/+ ```| Mueve el cursor abajo/arriba en la primera columna. |  
-|``` ctrl-d ```| Desplaza hacia abajo la mitad de la pantalla, |  
-|``` ctrl-u ```| Desplaza hacia arriba la mitad de la pantalla, |  
-|``` ctrl-f ```| Desplaza hacia abajo una pantalla, |  
-|``` ctrl-b ```| Desplaza hacia arriba una pantalla, |  
-|``` ctrl-y ```| Desplaza hacia abajo una línea, |  
-|``` ctrl-e ```| Desplaza hacia arriba una línea, |  
+|``` ctrl-d ```| Desplaza hacia abajo la mitad de la pantalla. |  
+|``` ctrl-u ```| Desplaza hacia arriba la mitad de la pantalla. |  
+|``` ctrl-f ```| Desplaza hacia abajo una pantalla. |  
+|``` ctrl-b ```| Desplaza hacia arriba una pantalla. |  
+|``` ctrl-y ```| Desplaza hacia abajo una línea. |  
+|``` ctrl-e ```| Desplaza hacia arriba una línea. |  
 |```M``` | Mueve el cursor al centro de la página. |
 |```H``` | Mueve el cursor al inicio de la página. |
 |```L``` | Mueve el cursor al final de la página. |
@@ -32,7 +32,7 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` $ ```| Mueve el cursor al final de la línea. |
 |``` ) ```| Mueve el cursor al inicio de la siguiente frase. (Delimitado por ```.```,'?','!'.) |
 |``` ( ```| Mueve el cursor al inicio de la frase actual. |
-|``` } ```| Mueve el cursor al inicio del siguiente párrafo. (Delimitado por líneas en blanco y las macros nroff **Mirar NROFF Macros**.) |
+|``` } ```| Mueve el cursor al inicio del siguiente párrafo. (Delimitado por líneas en blanco.) |
 |``` { ```| Mueve el cursor al inicio del párrafo actual. |
 |``` ]] ```| Mueve el cursor al inicio de la siguiente sección. |
 |``` [[ ```| Mueve el cursor al inicio de la sección actual. |
