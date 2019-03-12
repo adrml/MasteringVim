@@ -60,39 +60,36 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` U ```| deshace todos los cambios de la línea actual. |
 |``` dd ```| Elimina la línea actual. En caso de ir precedida por un número, eliminará el número de líneas indicado. (Y la/s almacena en un buffer.) |
 |``` D / d$ ```| Elimina el contenido de la línea actual, a partir del cursor. |
-|``` dw ```| Elimina la palabra a partir del cursor. En caso de ir precedido por un número eliminará el número de palabras indicado. (Sigue las mismas reglas que "w" y "W".) |
-|``` d- ```| Elimina la línea actual y la anterior. |
-|``` dfx ```| Elimina desde el cursor hasta la próxima aparición de la letra "x". |
-|``` d'x ```| Elimina desde el cursor hasta la línea marcada con el identificador "x". |
-|``` 'ad'b ```| Elimina desde la línea marcada con el identificador "a" hasta la línea marcada con el identificador "b". |
-|``` d/x ```| Elimina desde el cursor hasta la próxima aparición de "x", sin eliminar este. |
 |``` cc ```| Elimina la línea actual. En caso de ir precedida por un número, eliminará el número de líneas indicado, y entra en el modo inserción. |
 |``` C / c$ ```| Elimina el contenido de la línea actual, a partir de cursor, y entra en el modo inserción. | 
-|``` cw ```| Elimina la palabra a partir del cursor. En caso de ir precedido por un número eliminará el número de palabras indicado, y entra en el modo inserción.  (Sigue las mismas reglas que "w" y "W".) |
-|``` c- ```| Elimina la línea actual y la anterior, y entra en el modo inserción. |
-|``` cfx ```| Elimina desde el cursor hasta la próxima aparición de la letra "x", y entra en el modo inserción. |
-|``` c'x ```| Elimina desde el cursor hasta la línea marcada con el identificador "x", y entra en el modo inserción. |
-|``` 'ac'b ```| Elimina desde la línea marcada con el identificador "a" hasta la línea marcada con el identificador "b", y entra en el modo inserción. |
-|``` c/x ```| Elimina desde el cursor hasta la próxima aparición de "x", sin eliminar este, y entra en el modo inserción. |
 |``` x ```| elimina el carácter sobre el que está el cursor. |
 |``` X ```| elimina el carácter anterior al cursor. |
 |``` Y / yy ```| Copia el contenido de la línea actual en el buffer principal. En caso de ir precedido por un número, copiara tantas líneas como se indique. |
-|``` p ```| pega lo almacenado en el buffer principal a partir de la posición del cursor. En caso de ir precedido por un número, lo pegará ese número de veces. |
-|``` P ```| pega lo almacenado en el buffer principal antes de la posición del cursor. En caso de ir precedido por un número lo pegará tantas veces como se le indique. |
-|``` r ```| remplaza elcarácter ubicado en la posición actual del cursor. |
-|``` R ```| sobreescribe los carácteres escritos a partir de la posición del cursor. |
-|``` s ```| sustituye el carácter bajo el cursor y entra al modo inserción. En caso de ir precedido por un número, eliminará tantos carácteres como se le indique. |
-|``` S ```| sustituye la línea completa en la que está ubicada el cursor. En caso de ir precedido por un número, eliminará tantas líneas como se le indique. |
-|``` J ```| une la línea actual y la siguiente(o siguientes en caso de ir precedido por un número) y las une en una sola. | 
-|``` ~ ```| alterna entre mayúsculas y minúsculas en el carácter sobre el que este posicionado el cursor. |
+|``` p ```| Pega lo almacenado en el buffer principal a partir de la posición del cursor. En caso de ir precedido por un número, lo pegará ese número de veces. |
+|``` P ```| Pega lo almacenado en el buffer principal antes de la posición del cursor. En caso de ir precedido por un número lo pegará tantas veces como se le indique. |
+|``` r ```| Remplaza elcarácter ubicado en la posición actual del cursor. |
+|``` R ```| Sobreescribe los carácteres escritos a partir de la posición del cursor. |
+|``` s ```| Sustituye el carácter bajo el cursor y entra al modo inserción. En caso de ir precedido por un número, eliminará tantos carácteres como se le indique. |
+|``` S ```| Sustituye la línea completa en la que está ubicada el cursor. En caso de ir precedido por un número, eliminará tantas líneas como se le indique. |
+|``` J ```| Une la línea actual y la siguiente(o siguientes en caso de ir precedido por un número) y las une en una sola. | 
+|``` ~ ```| Alterna entre mayúsculas y minúsculas en el carácter sobre el que este posicionado el cursor. |
 |``` ctrl-a ```| Aumenta un número bajo el cursor. |
 |``` ctrl-x ```| Disminuye un número bajo el cursor. |
-|``` . ```| repite el último comando ejecutado. |
+|``` . ```| Repite el último comando ejecutado. |
 
 # Comandos combinados
 
+En algunos casos, como con los comandos ```c```, ```d``` o ```f``` una vez ejecutados, vim se queda esperando a una segunda acción, como podría ser, la afectación de la línea entera, o utilizando ciertos patrones que se mostrarán a continuación.
+| Keystrokes | Acción |
+| ---------- | -------| 
+|``` *w ```| Trabaja con la palabra a partir del cursor. En caso de ir precedido por un número eliminará el número de palabras indicado, y entra en el modo inserción.  (Sigue las mismas reglas que "w" y "W".) |
+|``` *- ```| Trabaja con la línea actual y la anterior, y entra en el modo inserción. |
+|``` *fx ```| Trabaja  con lo seleccionado a partir de el cursor hasta la próxima aparición de la letra "x", y entra en el modo inserción. |
+|``` *'x ```| Trabaja  con lo seleccionado a partir de el cursor hasta la línea marcada con el identificador "x", y entra en el modo inserción. |
+|``` 'a*'b ```| Trabaja  con lo seleccionado a partir de la línea marcada con el identificador "a" hasta la línea marcada con el identificador "b", y entra en el modo inserción. |
+|``` */x ```| Trabaja  con lo seleccionado a partir de el cursor hasta la próxima aparición de "x", sin afectar a este, y entra en el modo inserción. |
 
-
+> Donde el  * se sustituiría por la acción a realizar.
 # Macros 
 
 
