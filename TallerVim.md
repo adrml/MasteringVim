@@ -6,7 +6,6 @@ date: sáb mar  9 19:29:38 CET 2019
 
 # Moverse por el archivo
 
----
 | Keystrokes | Acción |
 | ---------- | -------| 
 |``` h/j/k/l ```| Mueve el cursor izquierda/abajo/arriba/derecha. |  
@@ -47,7 +46,6 @@ date: sáb mar  9 19:29:38 CET 2019
 
 # Editar el contenido del archivo 
 
----
 | Keystrokes | Acción |
 | ---------- | -------| 
 |``` : ```| Abre el modo inserción en la ubicación actual del cursor. |
@@ -56,7 +54,7 @@ date: sáb mar  9 19:29:38 CET 2019
 |``` A ```| Abre el modo inserción al final de la línea en la que está ubicada el cursor. |
 |``` o ```| Inserta una línea a partir de la línea actual del cursor y entra en el modo inserción. |
 |``` O ```| Inserta una línea en la línea anterior al cursor y entra en el modo inserción. |
-|``` Esc ```| Sale del modo inserción. (También se utiliza para finalizar otros modos, como el Visual.) |
+|``` Esc ```| Sale del modo inserción. *También se utiliza para finalizar otros modos, como el Visual.* |
 |``` u ```| Deshace el último cambio realizado. |
 |``` U ```| Deshace todos los cambios de la línea actual. |
 |``` x ```| Elimina el carácter sobre el que está el cursor. |
@@ -77,24 +75,22 @@ date: sáb mar  9 19:29:38 CET 2019
 
 # Comandos combinados
 
----
 En algunos casos, como con los comandos ```c```, ```d``` o ```f``` una vez ejecutados, vim se queda esperando a una segunda acción, como podría ser, la afectación de la línea entera, o utilizando ciertos patrones que se mostrarán a continuación.
 
 | Keystrokes | Acción |
 | ---------- | -------| 
 |``` *$  ```| Trabaja con lo marcado desde el cursor hasta el final de la línea actual. |
-|``` *w ```| Trabaja con la palabra a partir del cursor. (Sigue las mismas reglas que "w" y "W".) |
+|``` *w ```| Trabaja con la palabra a partir del cursor. *Sigue las mismas reglas que ```w``` y ```W```.* |
 |``` *- ```| Trabaja con la línea actual y la anterior, y entra en el modo inserción. |
-|``` *fx ```| Trabaja  con lo seleccionado a partir de el cursor hasta la próxima aparición de la letra "x", y entra en el modo inserción. |
-|``` *'x ```| Trabaja  con lo seleccionado a partir de el cursor hasta la línea marcada con el identificador "x", y entra en el modo inserción. |
-|``` 'a*'b ```| Trabaja  con lo seleccionado a partir de la línea marcada con el identificador "a" hasta la línea marcada con el identificador "b", y entra en el modo inserción. |
-|``` */x ```| Trabaja  con lo seleccionado a partir de el cursor hasta la próxima aparición de "x", sin afectar a este, y entra en el modo inserción. |
+|``` *fx ```| Trabaja  con lo seleccionado a partir de el cursor hasta la próxima aparición de la letra ```x```, y entra en el modo inserción. |
+|``` *'x ```| Trabaja  con lo seleccionado a partir de el cursor hasta la línea marcada con el identificador ```x```, y entra en el modo inserción. |
+|``` 'a*'b ```| Trabaja  con lo seleccionado a partir de la línea marcada con el identificador ```a``` hasta la línea marcada con el identificador ```b```, y entra en el modo inserción. |
+|``` */x ```| Trabaja  con lo seleccionado a partir de el cursor hasta la próxima aparición de ```x```, sin afectar a este, y entra en el modo inserción. |
 
 > Donde el  * se sustituiría por la acción a realizar.
 
 ---
 # Macros 
----
 
 En Vim una macro es un conjunto de comandos que pueden realizarse mediante un comando y/o una combinación de teclas.
 
@@ -114,42 +110,42 @@ Por ejemplo&rarr;```@a```
 Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 
 ---
-# Archivo vimrc
+# archivo vimrc
 
 ```vimrc
-		set nocompatible              " be iMproved, required
+		set nocompatible              " be improved, required
 		filetype off                  " required
 		filetype plugin on
-		" set the runtime path to include Vundle and initialize
-		set rtp+=~/.vim/bundle/Vundle.vim
+		" set the runtime path to include vundle and initialize
+		set rtp+=~/.vim/bundle/vundle.vim
 		call vundle#begin()
 
-		" let Vundle manage Vundle, required
-		Plugin 'VundleVim/Vundle.vim'
-		Plugin 'scrooloose/nerdtree'
-		Plugin 'raimondi/delimitmate'
-		Plugin 'yggdroot/indentline'
-		Plugin 'itchyny/lightline.vim'
-		Plugin 'othree/xml.vim.git'
-		Plugin 'moiatgit/vim-rst-sections.git'
-		Plugin 'mattn/emmet-vim'
-		Plugin 'scrooloose/nerdcommenter'
-		Plugin 'sql.vim--Stinson'
+		" let vundle manage vundle, required
+		plugin 'vundlevim/vundle.vim'
+		plugin 'scrooloose/nerdtree'
+		plugin 'raimondi/delimitmate'
+		plugin 'yggdroot/indentline'
+		plugin 'itchyny/lightline.vim'
+		plugin 'othree/xml.vim.git'
+		plugin 'moiatgit/vim-rst-sections.git'
+		plugin 'mattn/emmet-vim'
+		plugin 'scrooloose/nerdcommenter'
+		plugin 'sql.vim--stinson'
 
-		" All of your Plugins must be added before the following line
+		" all of your plugins must be added before the following line
 		call vundle#end()            " required
 		filetype plugin indent on    " required
-		nnoremap <S-n> :NERDTreeToggle <CR>
-		nnoremap <S-Left> :tabprevious<CR>
-		nnoremap <S-Right> :tabnext<CR>
-		nnoremap <S-Up> :tabnew<CR>
-		nnoremap <S-Down> :tabclose<CR>
-		map <S-Q> :w <bar> :autocmd BufWritePost * call AutoCommit()<CR>
+		nnoremap <s-n> :nerdtreetoggle <cr>
+		nnoremap <s-left> :tabprevious<cr>
+		nnoremap <s-right> :tabnext<cr>
+		nnoremap <s-up> :tabnew<cr>
+		nnoremap <s-down> :tabclose<cr>
+		map <s-q> :w <bar> :autocmd bufwritepost * call autocommit()<cr>
 		"colorscheme sahara 
 		syntax on
-		"Habilitar paleta de colores 256bits 
-		if $COLORTERM =='gnome-terminal'
-			set t_Co=256
+		"habilitar paleta de colores 256bits 
+		if $colorterm =='gnome-terminal'
+			set t_co=256
 		endif
 
 		"try 
@@ -159,13 +155,13 @@ Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 		"
 		"mapear en modo normal el espacio a / y el ctrl+espacio a ? para buscar
 		map <space> /
-		map <C-Space> ?
+		map <c-space> ?
 		"set background=dark 
-		"" Encoding
+		"" encoding
 		set encoding=utf-8
-		"Colores indentación
-		let g:indentLine_color_term=196
-		let g:indentLine_char='└'
+		"colores indentación
+		let g:indentline_color_term=196
+		let g:indentline_char='└'
 		let g:user_emmet_mode='a'
 		"color barra
 		set laststatus =2
@@ -173,17 +169,17 @@ Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 		\'colorscheme': 'solarized',
 		\}
 		set visualbell
-		"Highlight en las busquedas
+		"highlight en las busquedas
 		set hlsearch  
-		"Mejora la busqueda
+		"mejora la busqueda
 		set incsearch
-		"Quita ruido de errores
+		"quita ruido de errores
 		set noerrorbells
 
-		set omnifunc=syntaxcomplete#Complete
-		function! AutoCommit()
+		set omnifunc=syntaxcomplete#complete
+		function! autocommit()
 			call system('git rev-parse --git-dir > /dev/null 2>&1')
-			let message = 'ADRUpdated ' . expand('%:.')
+			let message = 'adrupdated ' . expand('%:.')
 			call system('git add ' . expand('%:p'))
 			call system('git commit -m ' . shellescape(message, 1))
 			call system('git push')
