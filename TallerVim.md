@@ -155,7 +155,7 @@ Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 
 ---
 
-#VIMRC
+# Vimrc
 
  En vim podemos modificar muchos parámetros del editor mientras editamos los ficheros. Por ejemplo, tecleando en modo comando :set number, Vim activará la numeración de líneas, algo que puede ser útil para programar.
 
