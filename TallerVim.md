@@ -164,8 +164,11 @@ Otro ejemplo, tecleando :syntax on, activaremos para el fichero actual el colore
 Pues bien, cualquier tipo de opción, macro, comando o función que vim entienda puede ser incluída en el fichero .vimrc en el directorio $HOME de nuestro usuario (o en un fichero _vimrc en el directorio de instalación de Vim o en el padre del Escritorio del usuario en Windows) de forma que se aplique como opción por defecto cuando lancemos Vim. Así, podemos crear un fichero .vimrc (por defecto normalmente no existirá), que contenga algo como lo siguiente:
 
 	set nocompatible
+
 	set number
+
 	set ruler
+
 	syntax on 
 
 Esto hará que siempre que editemos un fichero, aparezca numeración de líneas (set number), un indicador de fila y columna en la barra de estado (set ruler) y resaltado de sintaxis (si está definida para el tipo de fichero que estamos editando) activado. 
