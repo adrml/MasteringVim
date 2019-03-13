@@ -116,6 +116,23 @@ Para los programadores puede ser necesario, en ocasiones, cambiar el "case" de u
 |``` u ``` | 	En modo visual, pasa todo el texto seleccionado a minúsculas. |
 |``` U ``` | 	En modo visual, pasa todo el texto seleccionado a mayúsculas. |
 
+--- 
+
+# Buffers
+
+Finalmente, tenemos los buffers. Nos permite abrir múltiples ficheros pero viendo sólo uno cada vez. Con comandos de vim de apenas 2 letras podemos saltar de uno a otro, ocultando en el cambio el que tuvieramos actualmente en pantalla. Si editamos múltiples ficheros desde línea de comandos con "vim *.c", cada fichero .c acaba en un buffer. 
+
+| **Comando**  | **Significado** |
+|--------------|-----------------|
+|``` :buffers    ``` |	Ver el listado de buffers junto a sus números identificativos. |
+|``` :buffer N   ``` | 	Abrir buffer número N. |
+|``` :bn[ext]    ``` |	Ir al siguiente buffer. |
+|``` :bp[revious]``` | 	Ir al anterior buffer. |
+|``` :bf[irst]   ``` |	Ir al primer buffer. |
+|``` :bl[ast]    ``` |	Ir al último buffer. |
+|``` :bd[elete]  ``` |	Cerrar el buffer actual.  |
+ 
+
 
 # Macros 
 
