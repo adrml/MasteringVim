@@ -90,6 +90,32 @@ En algunos casos, como con los comandos ```c```, ```d``` o ```f``` una vez ejecu
 > Donde el  * se sustituiría por la acción a realizar.
 
 ---
+
+# Deshacer cambios
+
+ En vim, podemos deshacer múltiples pasos con la tecla ```u```, y rehacer pasos de nuevo con ```Ctrl-R```
+
+Esto es diferente del ví clásico, donde sólo podías deshacer un paso, y volviendo a dar a "u" deshacías lo deshecho, es decir, hacías un undo del undo.
+
+Para rizar más el rizo, vim dispone incluso de funcionalidad de undo especificando el tiempo. Podemos volver el documento atrás en el tiempo con el comando **:earlier**, y volver de nuevo adelante el tiempo necesario con **:later:**
+
+```
+:earlier 1h   <-- Volvemos el documento a como estaba hace 1 hora
+:later 10m    <-- Ahora avanzamos 30 minutos (a como estaba hace 60-10=50m)
+```
+---
+
+# Conversion Mayusculas/Minusculas
+
+Para los programadores puede ser necesario, en ocasiones, cambiar el "case" de un texto a minúsculas, mayúsculas, o alternarlo. Esto lo podemos hacer (una vez seleccionado el texto en modo visual) con:
+
+
+| **Comando**  | **Significado** |
+|``` ~ ``` |	Cambia el caso del caracter sobre el cursor en modo normal, o del texto seleccionado en modo visual. |
+|``` u ``` | 	En modo visual, pasa todo el texto seleccionado a minúsculas. |
+|``` U ``` | 	En modo visual, pasa todo el texto seleccionado a mayúsculas. |
+
+
 # Macros 
 
 En Vim una macro es un conjunto de comandos que pueden realizarse mediante un comando y/o una combinación de teclas.
@@ -110,7 +136,7 @@ Por ejemplo&rarr;```@a```
 Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 
 ---
-# archivo vimrc
+# Archivo vimrc
 
 ```vimrc
 		set nocompatible              " be improved, required
