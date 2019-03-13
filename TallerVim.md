@@ -132,7 +132,7 @@ Finalmente, tenemos los buffers. Nos permite abrir múltiples ficheros pero vien
 |``` :bl[ast]    ``` |	Ir al último buffer. |
 |``` :bd[elete]  ``` |	Cerrar el buffer actual.  |
  
-
+---
 
 # Macros 
 
@@ -154,79 +154,39 @@ Por ejemplo&rarr;```@a```
 Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 
 ---
-# Archivo vimrc
 
-```vimrc
-		set nocompatible              " be improved, required
-		filetype off                  " required
-		filetype plugin on
-		" set the runtime path to include vundle and initialize
-		set rtp+=~/.vim/bundle/vundle.vim
-		call vundle#begin()
+#VIMRC
 
-		" let vundle manage vundle, required
-		plugin 'vundlevim/vundle.vim'
-		plugin 'scrooloose/nerdtree'
-		plugin 'raimondi/delimitmate'
-		plugin 'yggdroot/indentline'
-		plugin 'itchyny/lightline.vim'
-		plugin 'othree/xml.vim.git'
-		plugin 'moiatgit/vim-rst-sections.git'
-		plugin 'mattn/emmet-vim'
-		plugin 'scrooloose/nerdcommenter'
-		plugin 'sql.vim--stinson'
+ En vim podemos modificar muchos parámetros del editor mientras editamos los ficheros. Por ejemplo, tecleando en modo comando :set number (dos puntos, set number, intro), Vim activará la numeración de líneas (no dentro del fichero en sí, sino visualmente), algo que puede ser útil para programar.
 
-		" all of your plugins must be added before the following line
-		call vundle#end()            " required
-		filetype plugin indent on    " required
-		nnoremap <s-n> :nerdtreetoggle <cr>
-		nnoremap <s-left> :tabprevious<cr>
-		nnoremap <s-right> :tabnext<cr>
-		nnoremap <s-up> :tabnew<cr>
-		nnoremap <s-down> :tabclose<cr>
-		map <s-q> :w <bar> :autocmd bufwritepost * call autocommit()<cr>
-		"colorscheme sahara 
-		syntax on
-		"habilitar paleta de colores 256bits 
-		if $colorterm =='gnome-terminal'
-			set t_co=256
-		endif
+Otro ejemplo, tecleando :syntax on, activaremos para el fichero actual el coloreado de sintaxis, es decir, que las palabras especiales que el editor entienda como que tienen un significado concreto aparecerán en diferentes colores. Si estamos programando en C, por ejemplo, las palabras claves aparecerán de un color, las cadenas de otro, etc (algo realmente útil a la hora de programar).
 
-		"try 
-			"colorscheme sahara
-		"catch
-		"endtry
-		"
-		"mapear en modo normal el espacio a / y el ctrl+espacio a ? para buscar
-		map <space> /
-		map <c-space> ?
-		"set background=dark 
-		"" encoding
-		set encoding=utf-8
-		"colores indentación
-		let g:indentline_color_term=196
-		let g:indentline_char='└'
-		let g:user_emmet_mode='a'
-		"color barra
-		set laststatus =2
-		let g:lightline = {
-		\'colorscheme': 'solarized',
-		\}
-		set visualbell
-		"highlight en las busquedas
-		set hlsearch  
-		"mejora la busqueda
-		set incsearch
-		"quita ruido de errores
-		set noerrorbells
+Pues bien, cualquier tipo de opción, macro, comando o función que vim entienda puede ser incluída en el fichero .vimrc en el directorio $HOME de nuestro usuario (o en un fichero _vimrc en el directorio de instalación de Vim o en el padre del Escritorio del usuario en Windows) de forma que se aplique como opción por defecto cuando lancemos Vim. Así, podemos crear un fichero .vimrc (por defecto normalmente no existirá), que contenga algo como lo siguiente:
 
-		set omnifunc=syntaxcomplete#complete
-		function! autocommit()
-			call system('git rev-parse --git-dir > /dev/null 2>&1')
-			let message = 'adrupdated ' . expand('%:.')
-			call system('git add ' . expand('%:p'))
-			call system('git commit -m ' . shellescape(message, 1))
-			call system('git push')
-		endfun
-```
+	set nocompatible
+	set number
+	set ruler
+	syntax on 
+
+Esto hará que siempre que editemos un fichero, aparezca numeración de líneas (set number), un indicador de fila y columna en la barra de estado (set ruler) y resaltado de sintaxis (si está definida para el tipo de fichero que estamos editando) activado. Es algo así como el fichero de opciones de vim para nuestro usuario (y sólo para nuestro usuario). Existe un fichero de opciones general /etc/vimrc (normalmente) cuyos cambios afectan a todos los usuarios cuando arrancan vim, pero lo que incluyamos en nuestro .vimrc sólo afectará a vim cuando lo ejecutemos con nuestro usuario del sistema.
+
+Así, podemos utilizar dicho fichero para indicar aquellas configuraciones con las que estemos más cómodos, de forma que podamos adaptar vim a nuestras necesidades. Es normal que en estos momentos iniciales no conozcamos vim lo suficiente como para hacernos un .vimrc decente, pero para empezar os recomiendo algo como lo que sigue:
+
+	" Fichero .vimrc de mi usuario
+	" Los comentarios se ponen con comillas dobles
+	set nobackup 
+	set ruler  
+
+	" nocompatible permite funciones que VI no soporta
+	set nocompatible 
+
+	set tabstop=4
+	set sw=4
+	set expandtab
+	    
+	set vb 
+	set noerrorbells 
+	syntax on
+
+Las posibilidades del fichero .vimrc son muy grandes, ya que no sólo soporta comandos simples de configuración sino que tiene un lenguaje propio que nos permite hacer casi cualquier tipo de cosa.
 ---
