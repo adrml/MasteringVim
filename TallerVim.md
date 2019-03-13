@@ -111,6 +111,7 @@ Para los programadores puede ser necesario, en ocasiones, cambiar el "case" de u
 
 
 | **Comando**  | **Significado** |
+|--------------|-----------------|
 |``` ~ ``` |	Cambia el caso del caracter sobre el cursor en modo normal, o del texto seleccionado en modo visual. |
 |``` u ``` | 	En modo visual, pasa todo el texto seleccionado a minúsculas. |
 |``` U ``` | 	En modo visual, pasa todo el texto seleccionado a mayúsculas. |
