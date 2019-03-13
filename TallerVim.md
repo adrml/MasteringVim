@@ -157,7 +157,7 @@ Ejecutará los bloques de comandos asignados a la macro almacenada en **a**.
 
 #VIMRC
 
- En vim podemos modificar muchos parámetros del editor mientras editamos los ficheros. Por ejemplo, tecleando en modo comando :set number (dos puntos, set number, intro), Vim activará la numeración de líneas (no dentro del fichero en sí, sino visualmente), algo que puede ser útil para programar.
+ En vim podemos modificar muchos parámetros del editor mientras editamos los ficheros. Por ejemplo, tecleando en modo comando :set number, Vim activará la numeración de líneas, algo que puede ser útil para programar.
 
 Otro ejemplo, tecleando :syntax on, activaremos para el fichero actual el coloreado de sintaxis, es decir, que las palabras especiales que el editor entienda como que tienen un significado concreto aparecerán en diferentes colores. Si estamos programando en C, por ejemplo, las palabras claves aparecerán de un color, las cadenas de otro, etc (algo realmente útil a la hora de programar).
 
@@ -168,7 +168,9 @@ Pues bien, cualquier tipo de opción, macro, comando o función que vim entienda
 	set ruler
 	syntax on 
 
-Esto hará que siempre que editemos un fichero, aparezca numeración de líneas (set number), un indicador de fila y columna en la barra de estado (set ruler) y resaltado de sintaxis (si está definida para el tipo de fichero que estamos editando) activado. Es algo así como el fichero de opciones de vim para nuestro usuario (y sólo para nuestro usuario). Existe un fichero de opciones general /etc/vimrc (normalmente) cuyos cambios afectan a todos los usuarios cuando arrancan vim, pero lo que incluyamos en nuestro .vimrc sólo afectará a vim cuando lo ejecutemos con nuestro usuario del sistema.
+Esto hará que siempre que editemos un fichero, aparezca numeración de líneas (set number), un indicador de fila y columna en la barra de estado (set ruler) y resaltado de sintaxis (si está definida para el tipo de fichero que estamos editando) activado. 
+
+Es algo así como el fichero de opciones de vim para nuestro usuario (y sólo para nuestro usuario). Existe un fichero de opciones general /etc/vimrc (normalmente) cuyos cambios afectan a todos los usuarios cuando arrancan vim, pero lo que incluyamos en nuestro .vimrc sólo afectará a vim cuando lo ejecutemos con nuestro usuario del sistema.
 
 Así, podemos utilizar dicho fichero para indicar aquellas configuraciones con las que estemos más cómodos, de forma que podamos adaptar vim a nuestras necesidades. Es normal que en estos momentos iniciales no conozcamos vim lo suficiente como para hacernos un .vimrc decente, pero para empezar os recomiendo algo como lo que sigue:
 
