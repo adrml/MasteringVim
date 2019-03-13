@@ -189,4 +189,5 @@ Así, podemos utilizar dicho fichero para indicar aquellas configuraciones con l
 	syntax on
 
 Las posibilidades del fichero .vimrc son muy grandes, ya que no sólo soporta comandos simples de configuración sino que tiene un lenguaje propio que nos permite hacer casi cualquier tipo de cosa.
+
 ---
